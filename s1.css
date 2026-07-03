@@ -1,121 +1,325 @@
+/* Language Switcher Section */
+        .lang-container {
+            max-width: 1100px;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+#lang-switcher {
+            border-radius: 100px;
+            border: 1px solid green;
+            background-color: black;
+            font-weight: 500;
+            cursor: pointer;
+            color: white;
+        }
+
+/* 2. Hero Header with Desert Horizon Gradient (180deg) */
+        .hero-banner {
+            border-radius: 16px;
+            /* Top 78% Desert Orange fading smoothly into a bottom trim of accent Red */
+            background: linear-gradient(180deg, #f97316 0%, #f97316 78%, #ea580c 88%, #dc2626 100%);
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.15);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+
+.hero-banner h1 {
+            margin-bottom: 1rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+
+        .hero-banner p {
+            font-size: 1.15rem;
+            line-height: 1.6;
+            max-width: 850px;
+        }
+
+/* 3. Main Body Container & Content Grid Box Cards */
+        .main-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+/* Modern Content Card */
+        .content-card {
+            background: linear-gradient(180deg, #f97316 0%, #f97316 75%, #ea580c 85%, #dc2626 100%);            border-radius: 14px;
+            padding: 2.25rem;
+            margin-bottom: 2rem;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }   
+
+/* Lists formatting inside boxes */
+        .content-card p {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 1.25rem;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 0.5rem;
+        }
+
+.content-card ul, .content-card ol {
+            list-style-position: inside;
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+        }
+
+.content-card li {
+            font-size: 1.05rem;
+            line-height: 1.5;
+            padding: 0.5rem 0;
+        }     
+
+/* Style tweaks for procedural lists and buttons */
+        .content-card ol li {
+            border-left: 3px solid #f97316;
+            padding-left: 12px;
+            list-style-type: none;
+            counter-increment: step-counter;
+        }
+
+
+        .content-card ol li::before {
+            content: counter(step-counter) ". ";
+            font-weight: bold;
+            color: blue;
+        }
+
+
+
+
+.brand-logo h1 {
+            font-size: 2.2rem;
+            letter-spacing: 1px;
+}
+
+.brand-logo h3 {
+            font-size: 1.25rem;
+            font-weight: 400;
+            font-style: italic;
+}
+
+/* Fixed Top Header & Navigation */
+        header {
+            
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: linear-gradient(180deg, #f97316 0%, #f97316 75%, #ea580c 85%, #dc2626 100%);
+    
+    /* Just adding height and width for testing so you can see the stripes */
+    width: 100%;
+    min-height: 200px;
+}
+
+        .header-top {
+            background-color: var(--primary-color);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+}
+
+/* Footer Frame Configurations */
+        footer {
+            background-color: var(--primary-color);
+            text-align: center;
+            padding: 2.5rem 1rem;
+            font-size: 0.9rem;
+            border-top: 4px solid var(--accent-color);
+        }
+
+
 h1{
 	text-align: center;
+    font-size: 2.2rem;
 }
 
 h3{
 	text-align: center;
+    font-size: 1.25rem;
+}
+
+h2{
+    font-size: 1.5rem;
 }
 
 body{
 	background-image: url('bg.png');
-	color: white;
+	color: #FFFFE0;
 	background-size: cover;
-	font-size: 20px;
+	font-size: 1rem;
 }
 
-a{
-	color: yellow;
-	border-style: dashed;
-	border-color: blue;
-}
 
 footer{
 	text-align: center;
 }
 
-.a{
-	margin-left: 5px;
-	margin-top: 20px;
-	margin-bottom: 20px;
+
+a{
+	color: yellow;
 }
 
-.b{
-	margin-left: 15px;
-	margin-top: 20px;
-	margin-bottom: 20px;
+
+.op{
+	text-align: center;
 }
 
-.c{
-	margin-left: 15px;
-	margin-top: 20px;
-	margin-bottom: 20px;
+
+
+                            /* AI */
+/* Navbar Container */
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Pushes logo to left, links to right */
+    align-items: center;
+    padding: 20px 40px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
-.d{
-	margin-left: 15px;
-	margin-top: 20px;
-	margin-bottom: 20px;
+.logo {
+    font-weight: 600;
 }
 
-.e{
-	margin-left: 15px;
-	margin-top: 20px;
-	margin-bottom: 20px;
+/* Navigation Links Layout */
+.nav-links {
+    display: flex;
+    gap: 20px; /* Crucial: This ensures a regular, exact distance between each link */
+    font-size: 0.875rem;
 }
 
-.f{
-	margin-left: 15px;
-	margin-top: 20px;
-	margin-bottom: 20px;
+/* The Rounded-Rectangle Links */
+.nav-item {
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0px 20px; /* Top/Bottom padding and Left/Right padding */
+    border: 2px solid blue;
+    border-radius: 150px; /* Creates the rounded-rectangle shape */
+    transition: all 0.3s ease; /* Smooth transition for the hover effect */
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: inline-flex;
 }
 
-.g{
-	margin-left: 15px;
-	margin-top: 20px;
-	margin-bottom: 20px;
+/* Hover Effect (Just like professional sites) */
+.nav-item:hover {
+    background-color: #2c3e50;
+    color: #ffffff;
+    border-color: #2c3e50;
 }
 
-.h{
-	margin-left: 15px;
-	margin-top: 20px;
-	margin-bottom: 20px;
+/* Simple Hero Section for the homepage content */
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    text-align: center;
+    padding: 0 20px;
 }
 
-.i{
-	margin-left: 15px;
-	margin-top: 20px;
-	margin-bottom: 20px;
+.hero-section h1 {
+    font-size: 20px;
+    color: #2c3e50;
+    margin-bottom: 15px;
 }
 
-.j{
-	margin-left: 15px;
-	margin-top: 20px;
-	margin-bottom: 20px;
+.hero-section p {
+    font-size: 20px;
+    color: #666;
 }
 
-.k{
-	margin-left: 15px;
-	margin-top: 20px;
-	margin-bottom: 20px;
+hr{
+    width: 100%;
 }
 
-.l{
-	margin-left: 15px;
-	margin-top: 20px;
-	margin-bottom: 20px;
+
+/* The TV Frame (Outer Box) */
+        .tv-container {
+            width: 200px;
+            height: 70px;
+            background-color: #333; /* Dark plastic/wood frame */
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            margin: 50px auto;
+        }
+
+        /* The TV Screen (The Display Box) */
+        .tv-screen {
+            width: 100%;
+            height: 100%;
+            background-color: #051c05; /* Vintage green matrix look */
+            border: 2px solid #222;
+            border-radius: 5px;
+            padding: 1px;
+            box-sizing: border-box;
+            
+            /* CRITICAL PROPERTIES: This creates the "TV" effect */
+            overflow: hidden; /* Hides any text that goes past the 250px height */
+            color: #00ff00;    /* Glowing green text */
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+
+        .s {
+            padding: 8px 12px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+
+
+
+
+
+
+
+        .scrollable-nav {
+    display: flex;             /* Places links side-by-side in a row */
+    white-space: nowrap;       /* Strictly forbids the links from wrapping to a second line */
+    overflow-x: auto;          /* Enables horizontal scrolling when items overflow the screen */
+    overflow-y: hidden;         /* Prevents any accidental vertical scrolling */
+    padding: 12px 16px;
+    background-color: #0f172a; /* Slate background (matches professional dashboards) */
+    gap: 20px;                 /* Adds clean, equal spacing between each link */
+    
+    /* Smooth scrolling behavior for touch screens */
+    -webkit-overflow-scrolling: touch; 
+    scroll-behavior: smooth;
 }
 
-.m{
-	margin-left: 15px;
-	margin-top: 20px;
-	margin-bottom: 20px;
+/* Optional: Styling the individual links so they are easy to tap */
+.nav-item {
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 100px;
+    transition: background 0.2s ease;
 }
 
-.n{
-	margin-left: 15px;
-	margin-top: 20px;
-	margin-bottom: 20px;
-}
-
-.o{
-	margin-left: 15px;
-	margin-top: 20px;
-	margin-bottom: 20px;
-}
-
-.p{
-	margin-left: 15px;
-	margin-top: 20px;
-	margin-bottom: 20px;
+/* Light highlight effect when a user hovers over a link */
+.nav-item:hover {
+    background-color: orangered;
+    color: white;
 }
 
