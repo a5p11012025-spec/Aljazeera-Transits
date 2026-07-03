@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABOUT US | Aljazeera Transits</title>
+    <link rel="stylesheet" type="text/css" href="s1.css">
+    <style>
+        /* Hero Banner Section */
+        .about-hero {
+            background: linear-gradient(rgba(14, 34, 61, 0.85
+            ), rgba(14, 34, 61, 0.95)), 
+                        url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1200') no-repeat center center/cover;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .about-hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .about-hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* Our Story Grid Layout */
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin-bottom: 70px;
+        }
+
+        .story-img img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .story-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .story-text h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: #ff9900; /* Distinct highlight brand color */
+            margin-top: 10px;
+            border-radius: 2px;
+        }
+
+        .story-text p {
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+
+        /* Stats & Trust Metrics Bar */
+        .stats-bar {
+            background-color: #0e223d;
+            padding: 40px 20px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 70px;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+        }
+
+        .stat-item p {
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Core Values Layout */
+        .values-section {
+            text-align: center;
+        }
+
+        .values-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .value-card {
+            background-color: #fff;
+            padding: 35px 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid #0e223d;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            border-top-color: #ff9900;
+        }
+
+        .value-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: black;
+        }
+
+        .value-card h3 {
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+        }
+
+        .value-card p {
+            font-size: 0.95rem;
+        }
+
+        /* Call To Action Button Banner */
+        .about-cta {
+            background-color: #f1f5f9;
+            text-align: center;
+            padding: 50px 20px;
+            margin-top: 40px;
+            border-radius: 10px;
+        }
+
+        .about-cta h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background-color: #ff9900;
+            padding: 12px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background 0.2s ease;
+        }
+
+        .cta-btn:hover {
+            background-color: #e08800;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            .story-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .about-hero h1 {
+                font-size: 2.2rem;
+            }
+            .stats-bar {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. HERO BANNER SECTION -->
+    <header class="about-hero">
+        <h1>ABOUT ALJAZEERA TRANSITS</h1>
+        <p>&bull; Connecting global cargo needs with trusted, secure, and verified logistics solutions.</p>
+    </header>
+
+    <main class="container">
+        
+        <!-- 2. OUR STORY SECTION -->
+        <section class="story-grid">
+            <div class="story-text">
+                <h2>Our Mission & Vision</h2>
+                <p>Founded to solve global transit hurdles, <b>Aljazeera Transits</b> serves as a specialized platform dedicated to connecting customers requiring secure cargo transport with reliable logistics professionals operating from various corners of the world.</p>
+                <p>We understand that international shipping requires ultimate transparency. That is why we built a network prioritizing absolute safety, end-to-end security, and an escrow structure ensuring verified payments reach transporters exactly when the delivery terms are fulfilled.</p>
+                <p>Whether you are shipping locally or bridging vast cross-border logistics lanes, our platform handles the heavy lifting so you can focus on expanding your operational horizons.</p>
+            </div>
+            <div class="story-img">
+                <!-- Generic shipping placeholder image -->
+                <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&q=80&w=600" alt="Logistics and Freight Cargo">
+            </div>
+        </section>
+
+        <!-- 3. TRUST STATISTICS BAR -->
+        <section class="stats-bar">
+            <div class="stat-item">
+                <h3>100%</h3>
+                <p>Verified Transporters</p>
+            </div>
+            <div class="stat-item">
+                <h3>Secure</h3>
+                <p>Payment System</p>
+            </div>
+            <div class="stat-item">
+                <h3>24/7</h3>
+                <p>Real-Time Tracking</p>
+            </div>
+            <div class="stat-item">
+                <h3>Global</h3>
+                <p>Cross-Border Reach</p>
+            </div>
+        </section>
+
+        <!-- 4. CORE VALUES SECTION -->
+        <section class="values-section">
+            <h2 style="color: black;">Our Core Values</h2>
+            <div class="values-grid">
+                
+                <div class="value-card" style="color: black;">
+                    <div class="icon" style="color: black;">🛡️</div>
+                    <h3>Absolute Security</h3>
+                    <p>Every transaction and shipment tracking checkpoint is strictly managed to ensure total cargo safety and verified transaction escrow execution.</p>
+                </div>
+
+                <div class="value-card" style="color: black;">
+                    <div class="icon" style="color: black;">🤝</div>
+                    <h3>Utmost Trust</h3>
+                    <p>We vet each logistics service provider carefully to maintain an elite standard of dependable professionals across our digital network.</p>
+                </div>
+
+                <div class="value-card" style="color: black;">
+                    <div class="icon" style="color: black;">🌍</div>
+                    <h3>Global Connectivity</h3>
+                    <p>Breaking border bottlenecks to bridge suppliers, buyers, and freight transit trucks seamlessly regardless of distance.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 5. CALL TO ACTION ACTION AREA -->
+        <section class="about-cta" style="color: black;">
+            <h3>Ready to transport your cargo safely?</h3>
+            <a href="crtsh.html" class="cta-btn">Get Started Now</a>
+        </section>
+
+    </main>
+
+
+    <hr>
+        <footer class="frame-replacement bottom-row">
+       		For more Information: <a href="">Contact us</a>. Or else: <a href="index.html">Return to Home Page</a><br>
+       		&#169; 2026 | Aljazeera Transits<br>
+       		All rights reserved.
+        </footer>
+    
+</body>
+</html>
