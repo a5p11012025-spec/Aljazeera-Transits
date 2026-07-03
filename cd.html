@@ -1,30 +1,489 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Customer Dashboard ~ Aljazeera Transits</title>
-	<link rel="stylesheet" type="text/css" href="s1.css">
-	<style>
-		body{
-			background-repeat: no-repeat;
-			background-size: cover;
-		}
-	</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipper Control Center | Aljazeera Transits</title>
+    <link rel="stylesheet" type="text/css" href="s1.css">
+    <style>
+        /* Base Setup & Modern Layout Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: #334155;
+            display: flex;
+        }
+
+        /* 1. SIDEBAR NAVIGATION PANEL */
+        .sidebar {
+            width: 260px;
+            background-color: #0e223d;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 10;
+        }
+
+        .sidebar-brand {
+            padding: 24px 20px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .sidebar-brand span {
+            color: #ff9900;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 20px 0;
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+
+        .menu-item a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 20px;
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .menu-item.active a, .menu-item a:hover {
+            background-color: rgba(255, 153, 0, 0.15);
+            color: #ff9900;
+            border-left: 4px solid #ff9900;
+            padding-left: 16px;
+        }
+
+        .sidebar-footer {
+            padding: 20px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            font-size: 0.85rem;
+            color: #94a3b8;
+            background-color: #0a1b30;
+        }
+
+        /* 2. MAIN WORKSPACE CONTAINER */
+        .main-content {
+            margin-left: 260px;
+            flex-grow: 1;
+            padding: 40px;
+            width: calc(100% - 260px);
+        }
+
+        /* Dashboard Global Top Header */
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+
+        .dashboard-header h1 {
+            font-size: 1.6rem;
+            color: #0e223d;
+        }
+
+        .dashboard-header p {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-top: 4px;
+        }
+
+        .user-profile-badge {
+            background: #f1f5f9;
+            padding: 8px 16px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid #e2e8f0;
+            color: #0e223d;
+        }
+
+        .user-avatar-dot {
+            width: 10px;
+            height: 10px;
+            background-color: #22c55e;
+            border-radius: 50%;
+        }
+
+        /* 3. METRIC COUNTER BOX GRID */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 35px;
+        }
+
+        .stat-card {
+            background: #fff;
+            padding: 22px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            border: 1px solid #e2e8f0;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .stat-value {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #0e223d;
+        }
+
+        .stat-value.highlight {
+            color: #ff9900;
+        }
+
+        /* 4. CONTENT WRAPPER: DUAL LAYOUT ROW */
+        .dashboard-layout-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        /* Workspace Dashboard Panel Card */
+        .panel-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            border: 1px solid #e2e8f0;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .panel-card h2 {
+            font-size: 1.15rem;
+            color: #0e223d;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .action-btn {
+            background-color: #ff9900;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .action-btn:hover {
+            background-color: #e08800;
+        }
+
+        /* Data Tables Design Rules */
+        .data-table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        .dashboard-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        .dashboard-table th, .dashboard-table td {
+            padding: 14px 16px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .dashboard-table th {
+            background-color: #f8fafc;
+            color: #475569;
+            font-weight: 600;
+        }
+
+        /* Status Tags Badges */
+        .status-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .status-badge.escrow-hold {
+            background-color: #fef3c7;
+            color: #d97706;
+        }
+
+        .status-badge.transit {
+            background-color: #e0f2fe;
+            color: #0369a1;
+        }
+
+        .status-badge.delivered {
+            background-color: #dcfce7;
+            color: #15803d;
+        }
+
+        /* Alerts Stream And Notification Feed */
+        .notification-stream {
+            list-style: none;
+        }
+
+        .notification-item {
+            padding: 15px 0;
+            border-bottom: 1px solid #f1f5f9;
+            font-size: 0.9rem;
+            color: #475569;
+        }
+
+        .notification-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .notification-meta {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        /* Responsive Mobile Breakpoints */
+        @media (max-width: 1120px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .dashboard-layout-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+            .main-content {
+                margin-left: 0;
+                width: 100%;
+                padding: 20px;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-	<h1>CUSTOMER DASHBOARD</h1>
-	<div>
-		<a href="index.html" class="a">Return Home</a>
-		<a href="cd.html" class="b">Dashboard Home</a>
-		<a href="" class="c">My Shipments</a>
-		<a href="sh.html" class="d">Create Shipment</a>
-		<a href="" class="e">Invoices</a>
-		<a href="" class="f">Payments</a>
-		<a href="" class="g">Tracking</a>
-		<a href="" class="h">Notifications</a>
-		<a href="" class="i">Support</a>
-	</div>
 
+    <!-- LEFT SIDEBAR COMPONENT -->
+    <nav class="sidebar">
+        <div class="sidebar-brand">
+            Aljazeera<span>Transits</span>
+        </div>
+        <ul class="sidebar-menu">
+            <li class="menu-item active"><a href="cd.html">📊 Main Dashboard</a></li>
+            <li class="menu-item"><a href="crtsh.html">📦 Create Shipment</a></li>
+            <li class="menu-item"><a href="myshp.html">🚚 My Active Shipments</a></li>
+            <li class="menu-item"><a href="trc.html">📍 Real-time Tracking</a></li>
+            <li class="menu-item"><a href="inv.html">📄 Invoices & Bills</a></li>
+            <li class="menu-item"><a href="pay.html">💳 Escrow Payments</a></li>
+            <li class="menu-item"><a href="not.html">🔔 Notifications</a></li>
+            <li class="menu-item"><a href="supp.html">💬 Help & Support</a></li>
+        </ul>
+        <div class="sidebar-footer">
+            Firm Workspace: Active
+        </div>
+    </nav>
+
+    <!-- MAIN WORKING INTERFACE SCREEN -->
+    <main class="main-content">
+        
+        <!-- TOP WELCOME HEADER RIBBON -->
+        <header class="dashboard-header">
+            <div>
+                <h1>Shipper Control Center</h1>
+                <p>Track your international trade lanes and open carrier bids in real-time.</p>
+            </div>
+            <div class="user-profile-badge">
+                <div class="user-avatar-dot"></div>
+                <span>Aljazeera Trading Ltd</span>
+            </div>
+        </header>
+
+        <!-- TOTALS COUNT KPI DISPLAY GRID -->
+        <section class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-label">Active Transits</div>
+                <div class="stat-value">3 Lanes</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Locked in Escrow</div>
+                <div class="stat-value highlight">$2,450.00</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Incoming Carrier Bids</div>
+                <div class="stat-value" style="color: #22c55e;">8 Open</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Completed Drops</div>
+                <div class="stat-value">42 Deliveries</div>
+            </div>
+        </section>
+
+        <!-- TWO-COLUMN WORKSPACE ROW -->
+        <div class="dashboard-layout-row">
+            
+            <!-- LEFT BROAD SIDE: ACTIVE MANIFEST TRACKING LOGS & BIDS -->
+            <section class="left-panel-column">
+                
+                <!-- CURRENT LOGISTICS MANIFESTS CARD -->
+                <div class="panel-card">
+                    <h2>
+                        <span>Current Logistics Manifests</span>
+                        <a href="reqt.html" class="action-btn" style="display: inline-block;">+ Post New Cargo</a>
+                    </h2>
+                    
+                    <div class="data-table-wrapper">
+                        <table class="dashboard-table">
+                            <thead>
+                                <tr>
+                                    <th>Tracking ID</th>
+                                    <th>Route Path</th>
+                                    <th>Weight (MT)</th>
+                                    <th>Escrow Deposit</th>
+                                    <th>Status State</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>AJ-87394-TZ</strong></td>
+                                    <td>Dar es Salaam ➔ Kampala</td>
+                                    <td>24 MT</td>
+                                    <td>$1,150.00</td>
+                                    <td><span class="status-badge transit">In Transit</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>AJ-90211-TZ</strong></td>
+                                    <td>Tanga ➔ Mombasa</td>
+                                    <td>12 MT</td>
+                                    <td>$520.00</td>
+                                    <td><span class="status-badge escrow-hold">Escrow Locked</span></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>AJ-86114-TZ</strong></td>
+                                    <td>Dar es Salaam ➔ Tanga</td>
+                                    <td>18 MT</td>
+                                    <td>$780.00</td>
+                                    <td><span class="status-badge delivered">Delivered</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- CARRIER COMPETITIVE OPEN BID MANAGING CARD -->
+                <div class="panel-card">
+                    <h2>Active Incoming Carrier Bids</h2>
+                    <div class="data-table-wrapper">
+                        <table class="dashboard-table">
+                            <thead>
+                                <tr>
+                                    <th>Transporter Fleet</th>
+                                    <th>Target Cargo Lane</th>
+                                    <th>Bid Amount</th>
+                                    <th>Rating Score</th>
+                                    <th>Action Trigger</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Regional Heavy Haulers Ltd</td>
+                                    <td>Tanga ➔ Mombasa Lane</td>
+                                    <td style="font-weight: 600; color: #22c55e;">$490.00</td>
+                                    <td>⭐ 4.9 (24 jobs)</td>
+                                    <td><button class="action-btn" style="padding: 5px 12px; font-size: 0.8rem;" onclick="window.location.href='payments.html'">Accept & Lock</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Express Corridor Assets</td>
+                                    <td>Tanga ➔ Mombasa Lane</td>
+                                    <td style="font-weight: 600; color: #22c55e;">$515.00</td>
+                                    <td>⭐ 4.7 (88 jobs)</td>
+                                    <td><button class="action-btn" style="padding: 5px 12px; font-size: 0.8rem;">Accept & Lock</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- RIGHT NARROW SIDE: ALERTS STREAM AND ACTIVITY FLOWS -->
+            <section class="right-panel-column">
+                
+                <!-- PLATFORM NOTIFICATIONS -->
+                <div class="panel-card">
+                    <h2>Platform Activity Notifications</h2>
+                    <ul class="notification-stream">
+                        <li class="notification-item">
+                            <span class="notification-meta">Just now</span>
+                            Shipment <strong>AJ-87394-TZ</strong> cleared the cross-border customs weight facility check.
+                        </li>
+                        <li class="notification-item">
+                            <span class="notification-meta">2 hours ago</span>
+                            New competitive routing bid received from <em>Regional Heavy Haulers Ltd</em> on your pending Tanga job.
+                        </li>
+                        <li class="notification-item">
+                            <span class="notification-meta">Yesterday</span>
+                            Escrow payment for job <strong>AJ-86114-TZ</strong> was successfully released to the driver's wallet following your drop confirmation code.
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- SECURITY PANEL INFOMATION -->
+                <div class="panel-card" style="background-color: #0e223d; color: #fff;">
+                    <h2 style="color: #ff9900;">🛡️ Escrow Guarantee</h2>
+                    <p style="font-size: 0.85rem; color: #cbd5e1; line-height: 1.5; margin-bottom: 12px;">
+                        Your funds are held securely by our platform clearing vault. Transporters can see that funding is completely guaranteed, but the money is only released once your cargo safely arrives.
+                    </p>
+                    <a href="t&C.html" style="color: #ff9900; font-size: 0.85rem; font-weight: bold; text-decoration: none;" target="_blank" rel="noopener">Review Escrow Policies ➔</a>
+                </div>
+
+            </section>
+        </div>
+    </main>
 </body>
 </html>
