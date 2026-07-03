@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Login | Aljazeera Transits</title>
+    <link rel="stylesheet" type="text/css" href="s1.css">
+    <style>
+        /* Base Setup & Reset */
+        * {
+         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(rgba(14, 34, 61, 0.85), rgba(14, 34, 61, 0.9)), 
+                        url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1200') no-repeat center center/cover;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Login Layout Card Box */
+        .login-card {
+            background: #ffffff;
+            width: 100%;
+            max-width: 420px;
+            padding: 40px 35px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Brand Typography Header Header */
+        .brand-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .brand-header h1 {
+            color: #0e223d;
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: -0.5px;
+        }
+
+        .brand-header h1 span {
+            color: #ff9900;
+        }
+
+        .brand-header p {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        /* Role Selector Tab Switch UI Component */
+        .role-selector {
+            display: flex;
+            background-color: #f1f5f9;
+            padding: 4px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .role-btn {
+            flex: 1;
+            background: none;
+            border: none;
+            padding: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #64748b;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            z-index: 2;
+        }
+
+        .role-btn.active {
+            background-color: #0e223d;
+            color: #ffffff;
+        }
+
+        /* Standard Input Field Form Group Row */
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #475569;
+            margin-bottom: 6px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 16px;
+            font-size: 0.95rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus {
+            border-color: #ff9900;
+            box-shadow: 0 0 0 3px rgba(255, 153, 0, 0.15);
+        }
+
+        /* Utilities Links Setup Options row */
+        .form-utilities {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            margin-bottom: 25px;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #475569;
+            cursor: pointer;
+        }
+
+        .forgot-pass {
+            color: #ff9900;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .forgot-pass:hover {
+            text-decoration: underline;
+        }
+
+        /* Prime Action Submit Button Layer */
+        .submit-btn {
+            width: 100%;
+            background-color: #ff9900;
+            color: #ffffff;
+            border: none;
+            padding: 14px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .submit-btn:hover {
+            background-color: #e08800;
+        }
+
+        /* Footer Link Context Signpost */
+        .card-footer {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 0.9rem;
+            color: #64748b;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 20px;
+        }
+
+        .card-footer a {
+            color: #0e223d;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .card-footer a:hover {
+            text-decoration: underline;
+            color: #ff9900;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CORE LOGIN SYSTEM CONTAINER CARD -->
+    <main class="login-card">
+        
+        <!-- BRANDING IDENTIFIER LAYER -->
+        <header class="brand-header">
+            <h1>Aljazeera<span>Transits</span></h1>
+            <p id="welcome-message">Welcome back! Please access your portal hub below.</p>
+        </header>
+
+        <!-- PORTAL SELECTOR ROLE SWITCHER -->
+        <div class="role-selector">
+            <button type="button" class="role-btn active" id="btn-shipper" onclick="setRole('shipper')">Cargo Owner</button>
+            <button type="button" class="role-btn" id="btn-carrier" onclick="setRole('carrier')">Transporter</button>
+        </div>
+
+        <!-- FORM UTILITY DATA COLLECTION -->
+        <form action="#" method="POST" id="login-form">
+            
+            <!-- Hidden Input value helper containing the active chosen role state -->
+            <input type="hidden" id="user-role" name="role" value="shipper">
+
+            <div class="form-group">
+                <label for="email">Business Email Address</label>
+                <input type="email" id="email" name="email" placeholder="name@company.com" required autocomplete="email">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Security Password</label>
+                <input type="password" id="password" name="password" placeholder="" required autocomplete="current-password">
+            </div>
+
+            <!-- OPTIONS CONTROL LINE LAYER -->
+            <div class="form-utilities">
+                <label class="remember-me">
+                    <input type="checkbox" id="remember" name="remember">
+                    <span>Remember device</span>
+                </label>
+                <a href="fgt.html" class="forgot-pass">Forgot Password?</a>
+            </div>
+
+            <!-- CORE SUBMISSION TRIGGER ACTION BUTTON -->
+            <button type="submit" class="submit-btn" id="submit-action-text">Login to Dashboard</button>
+
+        </form>
+
+        <!-- FOOTER SIGN UP REDIRECT COMPONENT -->
+        <footer class="card-footer">
+            New to the logistics platform? <a href="crt.html">Create an account</a>
+        </footer>
+
+    </main>
+
+    <!-- LIVE COMPONENT PORTAL TOGGLE JAVASCRIPT LOGIC -->
+    <script>
+        function setRole(roleType) {
+            const shipperBtn = document.getElementById('btn-shipper');
+            const carrierBtn = document.getElementById('btn-carrier');
+            const roleInput = document.getElementById('user-role');
+            const welcomeMsg = document.getElementById('welcome-message');
+            const actionText = document.getElementById('submit-action-text');
+
+            if (roleType === 'shipper') {
+                shipperBtn.classList.add('active');
+                carrierBtn.classList.remove('active');
+                roleInput.value = 'shipper';
+                welcomeMsg.textContent = 'Welcome back! Manage your loads and secure platform escrow holds.';
+                actionText.textContent = 'Login as Cargo Owner';
+            } else {
+                carrierBtn.classList.add('active');
+                shipperBtn.classList.remove('active');
+                roleInput.value = 'carrier';
+                welcomeMsg.textContent = 'Transporter Portal. Access active logistics routes and submit corridor freight bids.';
+                actionText.textContent = 'Login as Transporter';
+            }
+        }
+
+        // Initialize view text matching on load configuration setups
+        setRole('shipper');
+    </script>
+
+</body>
+</html>

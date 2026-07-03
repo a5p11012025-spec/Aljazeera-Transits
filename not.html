@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications Hub | Aljazeera Transits</title>
+    <style>
+        /* Base Setup & Shared Layout Sync */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f1f5f9;
+            color: #1e293b;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* SIDEBAR PANELS */
+        .sidebar {
+            width: 260px;
+            background-color: #0e223d;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 10;
+        }
+
+        .sidebar-brand {
+            padding: 24px 20px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .sidebar-brand span {
+            color: #ff9900;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 20px 0;
+            flex-grow: 1;
+        }
+
+        .menu-item a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 20px;
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .menu-item.active a, .menu-item a:hover {
+            background-color: rgba(255, 153, 0, 0.15);
+            color: #ff9900;
+            border-left: 4px solid #ff9900;
+            padding-left: 16px;
+        }
+
+        /* MAIN CONTENT AREA */
+        .main-content {
+            margin-left: 260px;
+            flex-grow: 1;
+            padding: 40px;
+            max-width: 1200px;
+        }
+
+        .page-header {
+            margin-bottom: 30px;
+        }
+
+        .page-header h1 {
+            font-size: 1.7rem;
+            color: #0e223d;
+        }
+
+        /* NOTIFICATIONS BOX MAIN CONTAINER */
+        .notifications-card {
+            background: #fff;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            padding: 30px;
+        }
+
+        /* Category Sorting Action Filters Bar */
+        .filter-bar {
+            display: flex;
+            gap: 10px;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            overflow-x: auto;
+        }
+
+        .filter-tab {
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            color: #64748b;
+            padding: 8px 16px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .filter-tab.active, .filter-tab:hover {
+            background-color: #0e223d;
+            border-color: #0e223d;
+            color: #fff;
+        }
+
+        /* Stream Feed Alert Rows */
+        .alert-stream {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .alert-row {
+            display: flex;
+            gap: 15px;
+            padding: 18px;
+            background-color: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            transition: background-color 0.2s;
+            position: relative;
+        }
+
+        .alert-row.unread {
+            background-color: #f8fafc;
+            border-left: 4px solid #ff9900;
+        }
+
+        .alert-badge-icon {
+            font-size: 1.4rem;
+            line-height: 1;
+            padding-top: 2px;
+        }
+
+        .alert-details {
+            flex-grow: 1;
+        }
+
+        .alert-details h3 {
+            font-size: 0.95rem;
+            color: #1e293b;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+
+        .alert-details p {
+            font-size: 0.9rem;
+            color: #475569;
+            line-height: 1.4;
+        }
+
+        .alert-time {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            font-weight: 500;
+            margin-top: 6px;
+            display: block;
+        }
+
+        .alert-link {
+            color: #ff9900;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .alert-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar { display: none; }
+            .main-content { margin-left: 0; padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="sidebar">
+        <div class="sidebar-brand">
+            Aljazeera<span>Transits</span>
+        </div>
+        <ul class="sidebar-menu">
+            <li class="menu-item"><a href="dashboard.html">📊 Main Dashboard</a></li>
+            <li class="menu-item"><a href="create-shipment.html">📦 Create Shipment</a></li>
+            <li class="menu-item"><a href="my-shipments.html">🚚 My Shipments</a></li>
+            <li class="menu-item"><a href="invoices.html">🧾 Invoices</a></li>
+            <li class="menu-item"><a href="payments.html">🛡️ Payments</a></li>
+            <li class="menu-item"><a href="tracking.html">📍 Tracking</a></li>
+            <li class="menu-item active"><a href="notifications.html">🔔 Notifications</a></li>
+            <li class="menu-item"><a href="support.html">💬 Support</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+        <header class="page-header">
+            <h1>Activity Alerts & Logs</h1>
+            <p style="color: #64748b; font-size: 0.95rem; margin-top: 2px;">Track system status updates, lane actions, and escrow clearing events.</p>
+        </header>
+
+        <section class="notifications-card">
+            
+            <div class="filter-bar">
+                <button class="filter-tab active">All Notifications</button>
+                <button class="filter-tab">Bids & Quotes</button>
+                <button class="filter-tab">Escrow & Finance</button>
+                <button class="filter-tab">Transit Tracking</button>
+            </div>
+
+            <div class="alert-stream">
+                
+                <div class="alert-row unread">
+                    <div class="alert-badge-icon">📦</div>
+                    <div class="alert-details">
+                        <h3>New Competitive Bid Received</h3>
+                        <p>Express Corridor Assets placed a bid of <strong>$515.00</strong> on your pending shipment listing, #AJ-90211 (Tanga ➔ Mombasa). <a href="my-shipments.html" class="alert-link">Review Bid Sheet</a></p>
+                        <span class="alert-time">Just now</span>
+                    </div>
+                </div>
+
+                <div class="alert-row unread">
+                    <div class="alert-badge-icon">📍</div>
+                    <div class="alert-details">
+                        <h3>Customs Node Clear Confirmation</h3>
+                        <p>Manifest load <strong>#AJ-87394-TZ</strong> has successfully checked through the regional cross-border customs terminal entry point.</p>
+                        <span class="alert-time">2 hours ago</span>
+                    </div>
+                </div>
+
+                <div class="alert-row">
+                    <div class="alert-badge-icon">🛡️</div>
+                    <div class="alert-details">
+                        <h3>Escrow Payout Disbursed Successfully</h3>
+                        <p>The system vault verified delivery confirmation for shipment #AJ-86540. Payment tranche of <strong>$780.00</strong> was safely transferred into the carrier's digital wallet balance.</p>
+                        <span class="alert-time">Yesterday at 4:15 PM</span>
+                    </div>
+                </div>
+
+                <div class="alert-row">
+                    <div class="alert-badge-icon">🧾</div>
+                    <div class="alert-details">
+                        <h3>Billing Invoice Compiled</h3>
+                        <p>System auto-generated invoice <strong>#INV-2026-0041</strong> for transport manifest run #AJ-89771. <a href="invoices.html" class="alert-link">Download Copy</a></p>
+                        <span class="alert-time">June 12, 2026</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+    </main>
+
+</body>
+</html>

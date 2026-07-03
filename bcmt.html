@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Become a Transporter | Aljazeera Transits</title>
+    <link rel="stylesheet" type="text/css" href="s1.css">
+    <style>
+        /* Base Setup & Reset */
+        * {
+         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Hero Banner Section */
+        .carrier-hero {
+            background: linear-gradient(rgba(14, 34, 61, 0.9), rgba(14, 34, 61, 0.95)), 
+                        url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&q=80&w=1200') no-repeat center center/cover;
+            color: #fff;
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .carrier-hero h1 {
+            font-size: 2.6rem;
+            margin-bottom: 12px;
+        }
+
+        .carrier-hero p {
+            font-size: 1.15rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #cbd5e1;
+        }
+
+        /* Two-Column Layout Grid */
+        .main-layout {
+            max-width: 1140px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 40px;
+        }
+
+        /* Left Side: Onboarding Perks & Requirements */
+        .info-panel h2 {
+            color: #0e223d;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+        }
+
+        .benefit-card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            border-left: 4px solid #ff9900;
+        }
+
+        .benefit-card h3 {
+            color: #0e223d;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .benefit-card p {
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        .requirements-box {
+            background-color: #0e223d;
+            color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+
+        .requirements-box h3 {
+            color: #ff9900;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .requirements-box ul {
+            list-style: none;
+        }
+
+        .requirements-box li {
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .requirements-box li::before {
+            content: "✓";
+            color: #ff9900;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* Right Side: Registration Form Card */
+        .form-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            padding: 35px;
+            align-self: start;
+        }
+
+        .form-card h2 {
+            color: #0e223d;
+            font-size: 1.6rem;
+            margin-bottom: 5px;
+        }
+
+        .form-card subtitle {
+            display: block;
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 18px;
+        }
+
+        label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #475569;
+            margin-bottom: 6px;
+        }
+
+        input, select, textarea {
+            padding: 10px 14px;
+            font-size: 0.95rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: #ff9900;
+        }
+
+        .file-note {
+            font-size: 0.75rem;
+            color: #64748b;
+            margin-top: 4px;
+        }
+
+        .submit-btn {
+            background-color: #ff9900;
+            color: #fff;
+            font-size: 1.05rem;
+            font-weight: bold;
+            border: none;
+            padding: 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.2s;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background-color: #e08800;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 900px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+            .carrier-hero h1 {
+                font-size: 2.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. HERO HEADER SECTION -->
+    <header class="carrier-hero">
+        <h1>Grow Your Logistics Business With Us</h1>
+        <p>Register your trucks, tap into a continuous stream of verified cross-border loads, and enjoy guaranteed secure milestone payments.</p>
+    </header>
+
+    <!-- 2. MAIN LAYOUT GRID -->
+    <main class="main-layout">
+        
+        <!-- LEFT LAYER: INFO PANEL -->
+        <section class="info-panel">
+            <h2>Why Drive with Aljazeera Transits?</h2>
+            
+            <div class="benefit-card">
+                <h3>Guaranteed Escrow Security</h3>
+                <p>Never worry about chasing clients for invoices. Cargo owners pay upfront into our platform hold, locking down your payment safely before you start moving.</p>
+            </div>
+
+            <div class="benefit-card">
+                <h3>Optimize Return Routes</h3>
+                <p>Eliminate costly empty return trips (deadhead miles). Use our live board matching network to pick up shipments returning back to your operational base.</p>
+            </div>
+
+            <div class="benefit-card">
+                <h3>Seamless Cross-Border Documentation</h3>
+                <p>Our operational tracking center streamlines border routing checkpoints, providing pre-verified clearing structures for heavy regional cargo freight.</p>
+            </div>
+
+            <!-- Mandatory Vetting Rules Checklist Box -->
+            <div class="requirements-box">
+                <h3>Minimum Verification Requirements</h3>
+                <p style="font-size: 0.9rem; margin-bottom: 15px; color: #cbd5e1;">To maintain high trust on our platform, all carrier assets undergo thorough verification. Ensure you possess:</p>
+                <ul>
+                    <li>Valid Commercial Driving Licenses (CDL / Class E or regional equivalent)</li>
+                    <li>Active Corporate Cargo / Goods in Transit (GIT) Insurance coverage</li>
+                    <li>Registered Vehicle Logbooks & Cross-border Permits</li>
+                    <li>Clean operating record with no fraudulent network marks</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- RIGHT LAYER: REGISTRATION FORM CARD -->
+        <section class="form-card">
+            <h2>Carrier Application</h2>
+            <subtitle>Submit your details to start the vetting process.</subtitle>
+            
+            <form action="#" method="POST" enctype="multipart/form-data">
+                
+                <div class="form-group">
+                    <label for="company-name">Company Name / Owner-Operator Title</label>
+                    <input type="text" id="company-name" name="transporter_title" placeholder="e.g., Aljazeera Fleet Ltd" required>
+                </div>
+
+                <div class="form-grid-2" style="display: grid; grid-template-columns: 1fr; gap: 10px;">
+                    <div class="form-group">
+                        <label for="contact-phone">Primary Contact Phone Number</label>
+                        <input type="tel" id="contact-phone" name="transporter_phone" placeholder="e.g., +255..." required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="fleet-size">Fleet Size (Total Active Trucks)</label>
+                    <select id="fleet-size" name="total_fleet" required>
+                        <option value="1">1 Truck (Independent Driver)</option>
+                        <option value="small">2 - 5 Trucks (Small Fleet)</option>
+                        <option value="medium">6 - 20 Trucks (Medium Operator)</option>
+                        <option value="large">Over 20 Trucks (Enterprise Logistics)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="primary-route">Primary Transport Corridor / Route</label>
+                    <input type="text" id="primary-route" name="dominant_route" placeholder="e.g., Tanga to Arusha, Dar to Kampala" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="license-upload">Upload Commercial Carrier License / Reg Document</label>
+                    <input type="file" id="license-upload" name="permit_doc" accept=".pdf, .png, .jpg" required>
+                    <div class="file-note">Accepted files: PDF, PNG, JPG (Max 5MB)</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="brief-bio">Primary Fleet Types & Specialized Equipments</label>
+                    <textarea id="brief-bio" name="fleet_specs" rows="3" placeholder="Describe your assets (e.g., 30-ton Flatbeds, Refrigerated Reefers, Low-loaders)..." required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit Application</button>
+
+            </form>
+        </section>
+
+    </main>
+
+    <hr>
+        <footer class="frame-replacement bottom-row">
+            For more Information: <a href="">Contact us</a>. Or else: <a href="index.html">Return to Home Page</a><br>
+            &#169; 2026 | Aljazeera Transits<br>
+            All rights reserved.
+        </footer>
+
+</body>
+</html>

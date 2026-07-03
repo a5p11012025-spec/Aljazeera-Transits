@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Security Password | Aljazeera Transits</title>
+    <style>
+        /* Base Setup & Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(rgba(14, 34, 61, 0.85), rgba(14, 34, 61, 0.9)), 
+                        url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1200') no-repeat center center/cover;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Recovery Card Canvas Box */
+        .recovery-card {
+            background: #ffffff;
+            width: 100%;
+            max-width: 420px;
+            padding: 40px 35px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        /* Structural Header Elements */
+        .card-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        /* Shield Recovery Security Icon Layout */
+        .security-icon {
+            font-size: 3rem;
+            color: #ff9900;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .card-header h2 {
+            color: #0e223d;
+            font-size: 1.6rem;
+            font-weight: bold;
+        }
+
+        .card-header p {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-top: 8px;
+            line-height: 1.5;
+        }
+
+        /* Standard Input Field Form Group */
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #475569;
+            margin-bottom: 6px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 16px;
+            font-size: 0.95rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus {
+            border-color: #ff9900;
+            box-shadow: 0 0 0 3px rgba(255, 153, 0, 0.15);
+        }
+
+        /* Submission Action Trigger */
+        .submit-btn {
+            width: 100%;
+            background-color: #ff9900;
+            color: #ffffff;
+            border: none;
+            padding: 14px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .submit-btn:hover {
+            background-color: #e08800;
+        }
+
+        /* Success State View Container (Hidden by default) */
+        .success-state {
+            display: none;
+            text-align: center;
+        }
+
+        .success-state p {
+            color: #475569;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .success-state strong {
+            color: #0e223d;
+        }
+
+        /* Footer Return Links Section */
+        .card-footer {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 0.9rem;
+            color: #64748b;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 20px;
+        }
+
+        .card-footer a {
+            color: #0e223d;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .card-footer a:hover {
+            text-decoration: underline;
+            color: #ff9900;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- MAIN RECOVERY SYSTEM CARD CONTAINER -->
+    <main class="recovery-card" id="recovery-box">
+        
+        <!-- INITIAL STATE: REQUEST PASSWORD RECOVERY FORM -->
+        <div id="request-state">
+            <header class="card-header">
+                <div class="security-icon">🛡️</div>
+                <h2>Forgot Password?</h2>
+                <p>Enter the business email address linked to your account. We will dispatch a secure link to reset your gateway credentials safely.</p>
+            </header>
+
+            <form id="recovery-form" onsubmit="handleRecoverySubmit(event)">
+                <div class="form-group">
+                    <label for="email">Registered Business Email</label>
+                    <input type="email" id="email" name="email" placeholder="name@company.com" required autocomplete="email">
+                </div>
+
+                <button type="submit" class="submit-btn">Send Recovery Instructions</button>
+            </form>
+        </div>
+
+        <!-- RECONFIGURED STATE: CONFIRMATION SUCCESS MESSAGE -->
+        <div id="success-view" class="success-state">
+            <header class="card-header">
+                <div class="security-icon" style="color: #22c55e;">✉️</div>
+                <h2>Check Your Email</h2>
+                <p>We have dispatched a temporary security token link to your corporate account mailbox.</p>
+            </header>
+            
+            <p>Please check <strong id="user-target-email">your inbox</strong> within the next 15 minutes to finalize setting up your new authorization password.</p>
+        </div>
+
+        <!-- CARD BASE NAVIGATION ROUTER LINKS -->
+        <footer class="card-footer">
+            Remembered your password? <a href="lgn.html">Return to Login</a>
+        </footer>
+
+    </main>
+
+    <!-- LIVE COMPONENT STATE TOGGLE SCRIPT -->
+    <script>
+        function handleRecoverySubmit(event) {
+            // Prevent standard browser page reload refresh
+            event.preventDefault();
+
+            const emailInput = document.getElementById('email').value;
+            const requestStateBlock = document.getElementById('request-state');
+            const successStateBlock = document.getElementById('success-view');
+            const emailTargetText = document.getElementById('user-target-email');
+
+            // Inject the entered email directly into the message text cleanly
+            emailTargetText.textContent = emailInput;
+
+            // Smooth component presentation toggle action
+            requestStateBlock.style.display = 'none';
+            successStateBlock.style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>

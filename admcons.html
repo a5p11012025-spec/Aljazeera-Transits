@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Control Console</title>
+    <style>
+        :root {
+            --primary-slate: #0f172a;
+            --text-muted: #64748b;
+            --border-light: #e2e8f0;
+            
+            /* Distinct colors for the three pathways */
+            --manage-brand: #2563eb;
+            --audit-brand: #0f766e;
+            --arbitrate-brand: #dc2626;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: var(--primary-slate);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .console-container {
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        .console-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .console-header h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--primary-slate);
+            letter-spacing: -0.025em;
+        }
+
+        .console-header p {
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* 3-Column Navigation Grid */
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Nav Card Options styling */
+        .console-card {
+            background: #ffffff;
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            padding: 2.25rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .console-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-content h2 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .card-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        /* Buttons/Links Configurations */
+        .console-link {
+            display: block;
+            width: 100%;
+            padding: 0.85rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #ffffff;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.2s ease;
+        }
+
+        /* Distinct Interactive States for Buttons */
+        .link-manage { background-color: var(--manage-brand); }
+        .link-manage:hover { background-color: #1d4ed8; }
+
+        .link-audit { background-color: var(--audit-brand); }
+        .link-audit:hover { background-color: #115e59; }
+
+        .link-arbitrate { background-color: var(--arbitrate-brand); }
+        .link-arbitrate:hover { background-color: #b91c1c; }
+    </style>
+</head>
+<body>
+
+    <div class="console-container">
+        
+        <div class="console-header">
+            <h1>Administrative Console</h1>
+            <p>Select an operational terminal route to execute system-level commands.</p>
+        </div>
+
+        <div class="links-grid">
+
+            <div class="console-card">
+                <div class="card-content">
+                    <h2 style="color: var(--manage-brand);">Verification & Escrow</h2>
+                    <p>Approve incoming transport driver credentials, review identification paperwork, and manually manage standard escrow wallet releases upon successful deliveries.</p>
+                </div>
+                <button class="console-link link-manage" onclick="window.location.href='admin-manage.html'">Manage</button>
+            </div>
+
+            <div class="console-card">
+                <div class="card-content">
+                    <h2 style="color: var(--audit-brand);">System Auditing</h2>
+                    <p>Review the unalterable financial ledger log files, look up past security footprints, examine system state adjustments, and export historical CSV records.</p>
+                </div>
+                <button class="console-link link-audit" onclick="window.location.href='admin-audit.html'">Audit</button>
+            </div>
+
+            <div class="console-card">
+                <div class="card-content">
+                    <h2 style="color: var(--arbitrate-brand);">Dispute Resolution</h2>
+                    <p>Intervene in active cargo delivery conflicts, examine uploaded evidence packages from clients, and execute fractional payout distributions.</p>
+                </div>
+                <button class="console-link link-arbitrate" onclick="window.location.href='admin-arbitrate.html'">Arbitrate</button>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

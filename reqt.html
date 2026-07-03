@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Transport | Aljazeera Transits</title>
+    <link rel="stylesheet" type="text/css" href="s1.css">
+    <style>
+        /* Base Setup & Reset */
+        * {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        /* Header styling matching core brand identity */
+        .form-header {
+            background-color: #0e223d;
+            color: #fff;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .form-header h1 {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .form-header p {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+        }
+
+        /* Form Layout Setup */
+        form {
+            padding: 40px;
+        }
+
+        .section-title {
+            color: #0e223d;
+            font-size: 1.25rem;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .full-width {
+            grid-column: span 2;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #475569;
+            margin-bottom: 6px;
+        }
+
+        input, select, textarea {
+            padding: 10px 14px;
+            font-size: 0.95rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            background-color: #fff;
+            color: #333;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: #ff9900; /* Amber focus indicator accent */
+        }
+
+        /* Note callout */
+        .escrow-note {
+            background-color: #fffbeb;
+            border-left: 4px solid #ff9900;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+            color: #78350f;
+        }
+
+        /* Submit Button Action style */
+        .submit-btn {
+            background-color: #ff9900;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border: none;
+            padding: 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.2s;
+        }
+
+        .submit-btn:hover {
+            background-color: #e08800;
+        }
+
+        /* Responsive UI view adjustments */
+        @media (max-width: 600px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            .full-width {
+                grid-column: span 1;
+            }
+            form {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <div class="form-header">
+            <h1>Create Transport Request</h1>
+            <p>Fill out shipment fields to receive instant freight matching configurations from verified transporters.</p>
+        </div>
+
+        <form action="#" method="POST">
+            
+            <div class="section-title">1. Route Details</div>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="pickup">Pick-up Location Address</label>
+                    <input type="text" id="pickup" name="pickup_address" placeholder="City, Country or Port origin" required>
+                </div>
+                <div class="form-group">
+                    <label for="destination">Delivery Destination Address</label>
+                    <input type="text" id="destination" name="destination_address" placeholder="Final delivery destination point" required>
+                </div>
+            </div>
+
+            <div class="section-title">2. Cargo Specs & Classification</div>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="cargo-type">Type of Goods</label>
+                    <select id="cargo-type" name="cargo_category" required>
+                        <option value="">-- Select Category --</option>
+                        <option value="general">General Commercial Freight</option>
+                        <option value="perishable">Perishable Items (Refrigerated)</option>
+                        <option value="bulk">Dry Bulk / Loose Cargo</option>
+                        <option value="hazardous">Hazardous Materials (Hazmat)</option>
+                        <option value="vehicles">Vehicles / Machinery</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="weight">Estimated Weight (in Metric Tons or KG)</label>
+                    <input type="text" id="weight" name="cargo_weight" placeholder="e.g., 12 Tons" required>
+                </div>
+                <div class="form-group">
+                    <label for="transit-type">Required Transit Fleet Option</label>
+                    <select id="transit-type" name="fleet_type" required>
+                        <option value="flatbed">Flatbed Trailer</option>
+                        <option value="box-truck">Enclosed Box Truck</option>
+                        <option value="reefer">Refrigerated Truck (Reefer)</option>
+                        <option value="tanker">Liquid Tanker</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="pickup-date">Target Collection Date</label>
+                    <input type="date" id="pickup-date" name="target_date" required>
+                </div>
+                <div class="form-group full-width">
+                    <label for="description">Additional Handling Instructions / Notes</label>
+                    <textarea id="description" name="handling_notes" rows="4" placeholder="List details such as loading dock availability, packaging dimensions, or customs border preferences..."></textarea>
+                </div>
+            </div>
+
+            <div class="section-title">3. Payment Allocation & Terms</div>
+            <div class="escrow-note">
+                <strong>🛡️ Secure Network Verification:</strong> Upon matching a verified driver, your designated transport fee will be allocated into our platform's secure escrow hold. Funds are safely protected and only transmitted to the freight carrier after you verify successful delivery at destination drop-off coordinates.
+            </div>
+
+            <button type="submit" class="submit-btn">Post Transport Request</button>
+
+        </form>
+    </div>
+
+    <hr>
+        <footer class="frame-replacement bottom-row">
+            For more Information: <a href="">Contact us</a>. Or else: <a href="index.html">Return to Home Page</a><br>
+            &#169; 2026 | Aljazeera Transits<br>
+            All rights reserved.
+        </footer>
+
+</body>
+</html>

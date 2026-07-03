@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create an Account | Aljazeera Transits</title>
+    <style>
+        /* Base Setup & Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(rgba(14, 34, 61, 0.85), rgba(14, 34, 61, 0.9)), 
+                        url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=1200') no-repeat center center/cover;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        /* Registration Layout Card Box */
+        .register-card {
+            background: #ffffff;
+            width: 100%;
+            max-width: 500px;
+            padding: 40px 35px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Brand Typography Header */
+        .brand-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .brand-header h1 {
+            color: #0e223d;
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: -0.5px;
+        }
+
+        .brand-header h1 span {
+            color: #ff9900;
+        }
+
+        .brand-header p {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        /* Role Selector Tab Switch UI */
+        .role-selector {
+            display: flex;
+            background-color: #f1f5f9;
+            padding: 4px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+
+        .role-btn {
+            flex: 1;
+            background: none;
+            border: none;
+            padding: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #64748b;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .role-btn.active {
+            background-color: #0e223d;
+            color: #ffffff;
+        }
+
+        /* Form Grid Layout */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .full-width {
+            grid-column: span 2;
+        }
+
+        /* Standard Input Field Form Group */
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #475569;
+            margin-bottom: 6px;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 11px 14px;
+            font-size: 0.95rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: #ff9900;
+            box-shadow: 0 0 0 3px rgba(255, 153, 0, 0.15);
+        }
+
+        /* Terms and Conditions Checkbox Row */
+        .terms-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: #475569;
+            margin: 20px 0;
+            cursor: pointer;
+        }
+
+        .terms-row input {
+            margin-top: 3px;
+        }
+
+        .terms-row a {
+            color: #ff9900;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* Primary Action Submit Button */
+        .submit-btn {
+            width: 100%;
+            background-color: #ff9900;
+            color: #ffffff;
+            border: none;
+            padding: 14px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .submit-btn:hover {
+            background-color: #e08800;
+        }
+
+        /* Footer Redirect Link */
+        .card-footer {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 0.9rem;
+            color: #64748b;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 20px;
+        }
+
+        .card-footer a {
+            color: #0e223d;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .card-footer a:hover {
+            text-decoration: underline;
+            color: #ff9900;
+        }
+
+        /* Mobile Breakpoint */
+        @media (max-width: 480px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            .full-width {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CORE REGISTRATION SYSTEM CONTAINER CARD -->
+    <main class="register-card">
+        
+        <!-- BRANDING IDENTIFIER LAYER -->
+        <header class="brand-header">
+            <h1>Aljazeera<span>Transits</span></h1>
+            <p id="welcome-message">Register your business account to join our logistics corridor platform.</p>
+        </header>
+
+        <!-- PORTAL ROLE SELECTOR TOGGLE -->
+        <div class="role-selector">
+            <button type="button" class="role-btn active" id="btn-shipper" onclick="setRole('shipper')">Cargo Owner</button>
+            <button type="button" class="role-btn" id="btn-carrier" onclick="setRole('carrier')">Transporter</button>
+        </div>
+
+        <!-- REGISTRATION FORM -->
+        <form action="#" method="POST" id="register-form">
+            
+            <!-- Hidden field capturing the active chosen role state -->
+            <input type="hidden" id="user-role" name="role" value="shipper">
+
+            <div class="form-grid">
+                
+                <!-- Full Name -->
+                <div class="form-group">
+                    <label for="first-name">First Name</label>
+                    <input type="text" id="first-name" name="first_name" placeholder="John" required>
+                </div>
+                <div class="form-group">
+                    <label for="last-name">Last Name</label>
+                    <input type="text" id="last-name" name="last_name" placeholder="Doe" required>
+                </div>
+
+                <!-- Company Name (Full Width) -->
+                <div class="form-group full-width">
+                    <label for="company-name" id="label-company">Company / Business Name</label>
+                    <input type="text" id="company-name" name="company_name" placeholder="e.g., Aljazeera Trading Ltd" required>
+                </div>
+
+                <!-- Business Email Address (Full Width) -->
+                <div class="form-group full-width">
+                    <label for="email">Business Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="name@company.com" required autocomplete="email">
+                </div>
+
+                <!-- Dynamic Account Option Input Box (Full Width) -->
+                <div class="form-group full-width" id="dynamic-field">
+                    <!-- Controlled by JavaScript Injection -->
+                </div>
+
+                <!-- Security Password Setup -->
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Min. 8 characters" required autocomplete="new-password">
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" name="confirm_password" placeholder="Repeat password" required autocomplete="new-password">
+                </div>
+
+            </div>
+
+            <!-- Terms Context Checkbox Link Section -->
+            <label class="terms-row">
+                <input type="checkbox" id="terms" name="terms" required>
+                <span>I explicitly agree to the <a href="t&C.html">Terms of Service</a> and recognize that payments are safely protected via secure platform escrow holds.</span>
+            </label>
+
+            <!-- CORE SUBMISSION TRIGGER ACTION BUTTON -->
+            <button type="submit" class="submit-btn" id="submit-action-text">Create Free Account</button>
+
+        </form>
+
+        <!-- FOOTER LOGIN REDIRECT COMPONENT -->
+        <footer class="card-footer">
+            Already have a transit profile? <a href="lgn.html">Login here</a>
+        </footer>
+
+    </main>
+
+    <!-- LIVE COMPONENT PORTAL TOGGLE JAVASCRIPT LOGIC -->
+    <script>
+        function setRole(roleType) {
+            const shipperBtn = document.getElementById('btn-shipper');
+            const carrierBtn = document.getElementById('btn-carrier');
+            const roleInput = document.getElementById('user-role');
+            const welcomeMsg = document.getElementById('welcome-message');
+            const companyLabel = document.getElementById('label-company');
+            const dynamicFieldContainer = document.getElementById('dynamic-field');
+            const actionText = document.getElementById('submit-action-text');
+
+            if (roleType === 'shipper') {
+                shipperBtn.classList.add('active');
+                carrierBtn.classList.remove('active');
+                roleInput.value = 'shipper';
+                welcomeMsg.textContent = 'Register as a Shipper to post cargo, clear regional routes, and protect payments.';
+                companyLabel.textContent = 'Company / Trader Name';
+                actionText.textContent = 'Register as Cargo Owner';
+
+                // Inject Cargo-specific optional field
+                dynamicFieldContainer.innerHTML = `
+                    <label for="cargo-type">Primary Cargo Nature</label>
+                    <select id="cargo-type" name="cargo_nature">
+                        <option value="general">General Dry Goods</option>
+                        <option value="agricultural">Agricultural / Foodstuffs</option>
+                        <option value="construction">Construction Materials</option>
+                        <option value="liquid">Liquid Bulk / Fuel</option>
+                    </select>
+                `;
+            } else {
+                carrierBtn.classList.add('active');
+                shipperBtn.classList.remove('active');
+                roleInput.value = 'carrier';
+                welcomeMsg.textContent = 'Register as a Transporter to view regional corridors, place bids, and secure payouts.';
+                companyLabel.textContent = 'Fleet / Transport Agency Name';
+                actionText.textContent = 'Register as Transporter';
+
+                // Inject Transporter-specific optional verification field
+                dynamicFieldContainer.innerHTML = `
+                    <label for="fleet-size">Estimated Fleet Asset Count</label>
+                    <select id="fleet-size" name="fleet_size">
+                        <option value="1-5">Independent Owner-Operator (1-5 trucks)</option>
+                        <option value="6-20">Mid-Sized Carrier Fleet (6-20 trucks)</option>
+                        <option value="21+">Enterprise Logistics Fleet (21+ trucks)</option>
+                    </select>
+                `;
+            }
+        }
+
+        // Initialize default view to shipper on page load
+        setRole('shipper');
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Dispute Arbitration</title>
+    <style>
+        :root {
+            --primary-color: #1e293b;
+            --accent-color: #b91c1c; /* Sharp red signaling conflict/arbitration */
+            --success-color: #16a34a;
+            --bg-light: #f8fafc;
+            --text-dark: #0f172a;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            display: flex;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            min-height: 100vh;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 260px;
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 2rem 1rem;
+            position: fixed;
+            height: 100vh;
+        }
+
+        .sidebar h2 {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            padding-left: 0.5rem;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .sidebar nav a {
+            display: block;
+            color: #cbd5e1;
+            text-decoration: none;
+            padding: 0.75rem 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: 6px;
+        }
+
+        .sidebar nav a.active {
+            background-color: var(--accent-color);
+            color: #ffffff;
+        }
+
+        /* Main Workspace Layout */
+        .main-content {
+            margin-left: 260px;
+            flex-grow: 1;
+            padding: 2rem;
+        }
+
+        header {
+            margin-bottom: 2rem;
+        }
+
+        header h1 {
+            font-size: 1.75rem;
+            color: var(--primary-color);
+        }
+
+        /* Active Cases Area */
+        .dispute-card {
+            background: #ffffff;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .dispute-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--bg-light);
+            padding-bottom: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .case-id {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        .evidence-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .evidence-box {
+            background-color: var(--bg-light);
+            padding: 1rem;
+            border-radius: 6px;
+            border: 1px dashed #cbd5e1;
+        }
+
+        .evidence-box h4 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        /* Arbitration Verdict Controls */
+        .verdict-zone {
+            background-color: #fff5f5;
+            border: 1px solid #fecaca;
+            padding: 1.25rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+        }
+
+        .verdict-zone h3 {
+            color: #991b1b;
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+
+        .slider-group {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .slider-group input {
+            flex-grow: 1;
+        }
+
+        .btn-verdict {
+            background-color: var(--success-color);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .btn-verdict:hover {
+            background-color: #15803d;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <h2>Admin Console</h2>
+        <nav>
+            <a href="#">Overview</a>
+            <a href="admin-manage.html">Manage Escrow & Drivers</a>
+            <a href="admin-audit.html">System Audit Logs</a>
+            <a href="#" class="active">Dispute Center</a>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <h1>Dispute Arbitration Room</h1>
+            <p style="color: #64748b; margin-top: 0.25rem;">Review conflicting claims, inspect submitted cargo evidence, and issue legal payout refunds.</p>
+        </header>
+
+        <!-- Active Arbitration Case File -->
+        <div class="dispute-card">
+            <div class="dispute-header">
+                <div>
+                    <span class="case-id">CASE #DISP-7702</span>
+                    <span style="margin-left: 1rem; color: #64748b;">Escrow Hold: <strong>$5,000.00</strong></span>
+                </div>
+                <span style="background-color: #fee2e2; color: #991b1b; padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.8rem; font-weight: bold;">CRITICAL DISPUTE</span>
+            </div>
+
+            <!-- Side-by-Side Claims Analysis -->
+            <div class="evidence-grid">
+                <div class="evidence-box">
+                    <h4>Customer Claim (Client A)</h4>
+                    <p style="font-size: 0.9rem; color: #475569;">"The fragile electronic components arrived with severe water damage because the driver failed to secure the weatherproof canvas lining."</p>
+                    <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #2563eb; font-weight: 500;">📄 Attached: Damage_Photo_1.jpg</p>
+                </div>
+                <div class="evidence-box">
+                    <h4>Transporter Counter-Claim (Driver B)</h4>
+                    <p style="font-size: 0.9rem; color: #475569;">"I encountered an unscheduled storm outside the main warehouse zone. The package outer wrapping got damp but the internal equipment seals are completely safe."</p>
+                    <p style="margin-top: 0.5rem; font-size: 0.85rem; color: #2563eb; font-weight: 500;">📄 Attached: Route_Log_Storm_Delay.pdf</p>
+                </div>
+            </div>
+
+            <!-- Admin Verdict Interactive Controls -->
+            <div class="verdict-zone">
+                <h3>Issue Settlement Distribution</h3>
+                <p style="font-size: 0.85rem; color: #7f1d1d; margin-bottom: 1rem;">Adjust the slider below to decide what percentage of the secure escrow funds should be returned to the Customer vs released to the Transporter.</p>
+                
+                <div class="slider-group">
+                    <span>Customer: <strong id="cust-val">50%</strong></span>
+                    <input type="range" id="payout-slider" min="0" max="100" value="50" oninput="updateSplit(this.value)">
+                    <span>Transporter: <strong id="trans-val">50%</strong></span>
+                </div>
+
+                <button class="btn-verdict" onclick="confirmVerdict()">Execute Binding Verdict</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateSplit(val) {
+            document.getElementById('cust-val').innerText = val + '%';
+            document.getElementById('trans-val').innerText = (100 - val) + '%';
+        }
+
+        function confirmVerdict() {
+            let custPercent = document.getElementById('cust-val').innerText;
+            let transPercent = document.getElementById('trans-val').innerText;
+            alert('Arbitration completed! Funds split executed: ' + custPercent + ' to Customer and ' + transPercent + ' to Transporter. This event has been locked into the Audit Log.');
+        }
+    </script>
+
+</body>
+</html>

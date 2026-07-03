@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frequently Asked Questions | Aljazeera Transits</title>
+    <link rel="stylesheet" type="text/css" href="s1.css">
+    <style>
+        /* Base Setup & Reset */
+        * {
+         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Hero Header Banner */
+        .faq-hero {
+            background: linear-gradient(rgba(14, 34, 61, 0.9), rgba(14, 34, 61, 0.95)), 
+                        url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=1200') no-repeat center center/cover;
+            color: #fff;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .faq-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .faq-hero p {
+            color: #cbd5e1;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Core Content Container */
+        .faq-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .faq-category-title {
+            color: #0e223d;
+            font-size: 1.4rem;
+            margin: 30px 0 15px;
+            padding-left: 5px;
+            border-left: 4px solid #ff9900;
+            font-weight: 600;
+        }
+
+        /* ACCORDION MECHANICAL STRUCTURE (Pure CSS) */
+        .faq-item {
+            background: #fff;
+            margin-bottom: 12px;
+            border-radius: 6px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* Hide the native structural checkbox */
+        .faq-input {
+            display: none;
+        }
+
+        /* The Question Trigger Box */
+        .faq-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 20px;
+            color: #0e223d;
+            font-weight: 600;
+            cursor: pointer;
+            user-select: none;
+            transition: background-color 0.2s;
+        }
+
+        .faq-label:hover {
+            background-color: #f8fafc;
+        }
+
+        /* Plus/Minus Indicator Icon */
+        .faq-label::after {
+            content: '+';
+            font-size: 1.4rem;
+            color: #ff9900;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+
+        /* The Answer Wrapper (Hidden by default) */
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
+            background-color: #fff;
+        }
+
+        .faq-answer-content {
+            padding: 0 20px 20px 20px;
+            color: #475569;
+            font-size: 0.95rem;
+            border-top: 1px solid #f1f5f9;
+            padding-top: 15px;
+        }
+
+        /* Dynamic Expand Action when checkbox is toggled active */
+        .faq-input:checked ~ .faq-answer {
+            max-height: 1000px; /* Big enough to clear standard paragraphs safely */
+            transition: max-height 0.5s ease-in-out;
+        }
+
+        /* Rotate cross indicator to form a minus or close sign */
+        .faq-input:checked ~ .faq-label::after {
+            content: '−';
+            transform: rotate(180deg);
+        }
+
+        /* Call To Action Footer Support Banner */
+        .support-card {
+            background-color: #0e223d;
+            color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .support-card h3 {
+            color: #ff9900;
+            margin-bottom: 8px;
+            font-size: 1.4rem;
+        }
+
+        .support-card p {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .support-btn {
+            display: inline-block;
+            background-color: #fff;
+            color: #0e223d;
+            padding: 10px 24px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: all 0.2s;
+        }
+
+        .support-btn:hover {
+            background-color: #ff9900;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. FAQ HERO HEADER -->
+    <header class="faq-hero">
+        <h1>Support & FAQ Hub</h1>
+        <p>Have questions about how Aljazeera Transits works? Find quick answers regarding our cargo operations and escrow system here.</p>
+    </header>
+
+    <!-- 2. ACCORDION FLOW GROUPS -->
+    <main class="faq-container">
+
+        <!-- CATEGORY 1: FOR CARGO OWNERS -->
+        <div class="faq-category-title">For Cargo Owners (Shippers)</div>
+
+        <!-- FAQ Item 1 -->
+        <div class="faq-item">
+            <input type="checkbox" id="faq-1" class="faq-input">
+            <label for="faq-1" class="faq-label">How does the secure escrow payment work?</label>
+            <div class="faq-answer">
+                <div class="faq-answer-content">
+                    <p>When you accept a matched transporter's bid, your payment is safely deposited into our network platform hold (escrow). The driver can see that the payment is guaranteed and locked, motivating them to move your cargo quickly. However, the money is <strong>only released</strong> into the driver's wallet after you confirm safe delivery at the destination coordinates.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Item 2 -->
+        <div class="faq-item">
+            <input type="checkbox" id="faq-2" class="faq-input">
+            <label for="faq-2" class="faq-label">How are your transporters verified?</label>
+            <div class="faq-answer">
+                <div class="faq-answer-content">
+                    <p>Every single carrier and fleet driver on Aljazeera Transits undergoes a mandatory onboarding screen. We strictly verify corporate registration documents, active Goods in Transit (GIT) cargo insurance policies, valid heavy vehicle commercial driver's licenses, and truck logbooks before approving them to bid on jobs.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Item 3 -->
+        <div class="faq-item">
+            <input type="checkbox" id="faq-3" class="faq-input">
+            <label for="faq-3" class="faq-label">What weight unit should I use when posting cargo?</label>
+            <div class="faq-answer">
+                <div class="faq-answer-content">
+                    <p>Our global routing and matching algorithms operate strictly using the International Metric System. Please input your cargo loads using <strong>Metric Tons (1 Metric Ton = 1,000 Kilograms)</strong>. This standard keeps cross-border customs declarations perfectly accurate and avoids accidental truck overloading.</p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- CATEGORY 2: FOR TRANSPORTERS -->
+        <div class="faq-category-title">For Transporters & Carriers</div>
+
+        <!-- FAQ Item 4 -->
+        <div class="faq-item">
+            <input type="checkbox" id="faq-4" class="faq-input">
+            <label for="faq-4" class="faq-label">When do I receive my transit payout?</label>
+            <div class="faq-answer">
+                <div class="faq-answer-content">
+                    <p>Payouts are processed instantly when the cargo owner signs off or confirms successful delivery through their dashboard. Once verified, the escrow system clears the funds and distributes them directly into your secure carrier dashboard account wallet for withdrawal.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Item 5 -->
+        <div class="faq-item">
+            <input type="checkbox" id="faq-5" class="faq-input">
+            <label for="faq-5" class="faq-label">Does the platform support long-distance cross-border logistics?</label>
+            <div class="faq-answer">
+                <div class="faq-answer-content">
+                    <p>Yes, absolutely! Aljazeera Transits is custom-built to bridge regional bottlenecks and handle cross-border trade corridors seamlessly. Our manifest tracking features help clear transit logs cleanly across international borders, making it easier for trucks traveling long haul lanes.</p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- 3. STILL NEED HELP CARD BANNER -->
+        <section class="support-card">
+            <h3>Still have questions?</h3>
+            <p>Our dedicated logistics operations support team is available 24/7 to clear any technical or shipment bottlenecks.</p>
+            <a href="cnt.html" class="support-btn">Contact Operations Support</a>
+        </section>
+
+    </main>
+
+    <hr>
+        <footer class="frame-replacement bottom-row">
+            For more Information: <a href="">Contact us</a>. Or else: <a href="index.html">Return to Home Page</a><br>
+            &#169; 2026 | Aljazeera Transits<br>
+            All rights reserved.
+        </footer>
+
+</body>
+</html>

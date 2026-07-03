@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoices | Aljazeera Transits</title>
+    <style>
+        /* Base Setup & Shared Layout Sync */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f1f5f9;
+            color: #1e293b;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* SIDEBAR PANELS */
+        .sidebar {
+            width: 260px;
+            background-color: #0e223d;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 10;
+        }
+
+        .sidebar-brand {
+            padding: 24px 20px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .sidebar-brand span {
+            color: #ff9900;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 20px 0;
+            flex-grow: 1;
+        }
+
+        .menu-item a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 20px;
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .menu-item.active a, .menu-item a:hover {
+            background-color: rgba(255, 153, 0, 0.15);
+            color: #ff9900;
+            border-left: 4px solid #ff9900;
+            padding-left: 16px;
+        }
+
+        /* MAIN CONTENT AREA */
+        .main-content {
+            margin-left: 260px;
+            flex-grow: 1;
+            padding: 40px;
+            max-width: 1200px;
+        }
+
+        .page-header {
+            margin-bottom: 30px;
+        }
+
+        .page-header h1 {
+            font-size: 1.7rem;
+            color: #0e223d;
+        }
+
+        /* INVOICE CONTROL TABLE CANVAS */
+        .invoice-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            border: 1px solid #e2e8f0;
+            padding: 30px;
+        }
+
+        .table-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 15px;
+        }
+
+        .search-box {
+            padding: 10px 16px;
+            font-size: 0.9rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            outline: none;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .search-box:focus {
+            border-color: #ff9900;
+        }
+
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        .invoice-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        .invoice-table th, .invoice-table td {
+            padding: 14px 18px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .invoice-table th {
+            background-color: #f8fafc;
+            color: #475569;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* Invoice Specific Status Rules */
+        .status-pill {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-align: center;
+            min-width: 110px;
+        }
+
+        .pill-paid { background-color: #dcfce7; color: #15803d; }
+        .pill-pending { background-color: #fef3c7; color: #d97706; }
+        .pill-disputed { background-color: #fee2e2; color: #b91c1c; }
+
+        .btn-print {
+            background: none;
+            border: 1px solid #cbd5e1;
+            color: #475569;
+            padding: 6px 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .btn-print:hover {
+            background-color: #f1f5f9;
+            border-color: #94a3b8;
+            color: #0e223d;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar { display: none; }
+            .main-content { margin-left: 0; padding: 20px; }
+            .table-toolbar { flex-direction: column; align-items: flex-start; }
+            .search-box { max-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SIDEBAR NAV LINK STRIP -->
+    <nav class="sidebar">
+        <div class="sidebar-brand">
+            Aljazeera<span>Transits</span>
+        </div>
+        <ul class="sidebar-menu">
+            <li class="menu-item"><a href="dashboard.html">📊 Main Dashboard</a></li>
+            <li class="menu-item"><a href="create-shipment.html">📦 Create Shipment</a></li>
+            <li class="menu-item"><a href="my-shipments.html">🚚 My Shipments</a></li>
+            <li class="menu-item active"><a href="invoices.html">🧾 Invoices</a></li>
+            <li class="menu-item"><a href="payments.html">🛡️ Payments</a></li>
+            <li class="menu-item"><a href="tracking.html">📍 Tracking</a></li>
+            <li class="menu-item"><a href="notifications.html">🔔 Notifications</a></li>
+            <li class="menu-item"><a href="support.html">💬 Support</a></li>
+        </ul>
+    </nav>
+
+    <!-- INVOICE ARCHIVE PANEL WORKSPACE -->
+    <main class="main-content">
+        <header class="page-header">
+            <h1>Billing Statements &amp; Invoices</h1>
+            <p style="color: #64748b; font-size: 0.95rem; margin-top: 2px;">Review current freight line clearings, escrow ledgers, and download official receipts.</p>
+        </header>
+
+        <section class="invoice-card">
+            
+            <div class="table-toolbar">
+                <input type="text" class="search-box" placeholder="Search by Invoice ID or Route...">
+                <div style="font-size: 0.85rem; color: #64748b;">All amounts balanced in standard USD clearing metrics</div>
+            </div>
+
+            <div class="table-wrapper">
+                <table class="invoice-table">
+                    <thead>
+                        <tr>
+                            <th>Invoice ID</th>
+                            <th>Manifest Ref</th>
+                            <th>Route Detail Path</th>
+                            <th>Total Cost</th>
+                            <th>Issue Date</th>
+                            <th>Payment Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>#INV-2026-0042</strong></td>
+                            <td>#AJ-86540</td>
+                            <td>Mombasa Port ➔ Namanve Park</td>
+                            <td style="font-weight: 600;">$780.00</td>
+                            <td>June 15, 2026</td>
+                            <td><span class="status-pill pill-paid">Settled &amp; Closed</span></td>
+                            <td><button class="btn-print" onclick="alert('Downloading PDF Receipt Document Statement...')">📄 PDF Receipt</button></td>
+                        </tr>
+                        <tr>
+                            <td><strong>#INV-2026-0041</strong></td>
+                            <td>#AJ-89771</td>
+                            <td>Dar es Salaam Terminal ➔ Ggaba Rd</td>
+                            <td style="font-weight: 600;">$1,150.00</td>
+                            <td>June 12, 2026</td>
+                            <td><span class="status-pill pill-pending">Escrow Locked</span></td>
+                            <td><button class="btn-print" onclick="window.location.href='payments.html'">📄 View Ledger</button></td>
+                        </tr>
+                        <tr>
+                            <td><strong>#INV-2026-0039</strong></td>
+                            <td>#AJ-84110</td>
+                            <td>Tanga Port Facility ➔ Arusha Corridor</td>
+                            <td style="font-weight: 600;">$420.00</td>
+                            <td>May 28, 2026</td>
+                            <td><span class="status-pill pill-paid">Settled &amp; Closed</span></td>
+                            <td><button class="btn-print" onclick="alert('Downloading PDF Receipt Document Statement...')">📄 PDF Receipt</button></td>
+                        </tr>
+                        <tr>
+                            <td><strong>#INV-2026-0035</strong></td>
+                            <td>#AJ-81203</td>
+                            <td>Dar es Salaam Terminal ➔ Nairobi Hub</td>
+                            <td style="font-weight: 600;">$950.00</td>
+                            <td>May 10, 2026</td>
+                            <td><span class="status-pill pill-disputed">Disputed Hold</span></td>
+                            <td><button class="btn-print" style="color: #b91c1c;" onclick="alert('Redirecting to Arbitration Desk... Please check active system support tickets.')">Review Lock</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+    </main>
+
+</body>
+</html>

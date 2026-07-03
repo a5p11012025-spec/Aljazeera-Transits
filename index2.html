@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ALJAZEERA TRANSITS | Homepage, Official Website</title>
+    <link rel="stylesheet" type="text/css" href="s1.css">
+    <style>
+        /* Modern Design System Tokens */
+        :root {
+            --primary-color: #0f172a;    /* Premium dark slate */
+            --accent-color: #2563eb;     /* Professional Logistics Blue */
+            --text-dark: #334155;        /* Soft dark readable text */
+            --bg-light: #f8fafc;         /* Crisp light canvas */
+            --card-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Fixed Top Header & Navigation */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-top {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .brand-logo h1 {
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
+
+        .brand-logo h3 {
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: #cbd5e1;
+            font-style: italic;
+        }
+
+        /* Language Switcher Container */
+        .lang-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: #cbd5e1;
+        }
+
+        #lang-switcher {
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            border: 1px solid #475569;
+            background-color: #1e293b;
+            color: white;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        /* Navigation Bar Link Layout */
+        .nav-links {
+            display: flex;
+            gap: 0.25rem;
+            padding: 0.75rem 1rem;
+            background-color: #ffffff;
+            overflow-x: auto; /* Scrolls nicely on small screens */
+            white-space: nowrap;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .nav-item {
+            text-decoration: none;
+            color: #475569;
+            padding: 0.5rem 0.85rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: var(--transition);
+        }
+
+        .nav-item:hover {
+            background-color: #f1f5f9;
+            color: var(--accent-color);
+        }
+
+        /* Special highlights for User Dashboards and Call-to-actions */
+        .nav-item[href*="dshb"], .nav-item[href="cd.html"] {
+            background-color: #eff6ff;
+            color: var(--accent-color);
+        }
+        .nav-item[href*="dshb"]:hover, .nav-item[href="cd.html"]:hover {
+            background-color: var(--accent-color);
+            color: #ffffff;
+        }
+
+        /* Hero Landing Container */
+        .hero-section {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: #ffffff;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero-section .inner-content {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            line-height: 1.7;
+        }
+
+        /* Main Workspace Content Containers */
+        .content-box {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1rem;
+        }
+
+        /* Layout styles parsed for dynamic JS translation injection */
+        .dynamic-sections-wrapper h2 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin: 2.5rem 0 1.25rem 0;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .dynamic-sections-wrapper h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        /* Modern Grid Layouts for lists */
+        .dynamic-sections-wrapper ul, .dynamic-sections-wrapper ol {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        /* Box styling for features and lists */
+        .dynamic-sections-wrapper ul li, .dynamic-sections-wrapper ol li {
+            background: #ffffff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            box-shadow: var(--card-shadow);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .dynamic-sections-wrapper ul li:hover, .dynamic-sections-wrapper ol li:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Distinct styling for bullet checks */
+        .dynamic-sections-wrapper ul li {
+            border-left: 4px solid var(--accent-color);
+        }
+
+        /* Ordered Step Numbering style counter adjustments */
+        .dynamic-sections-wrapper ol {
+            counter-reset: step-counter;
+        }
+
+        .dynamic-sections-wrapper ol li {
+            border-left: 4px solid #10b981;
+        }
+
+        .dynamic-sections-wrapper ol li::before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            background-color: #e6f4ea;
+            color: #10b981;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+
+        /* Footer Frame Configurations */
+        footer {
+            background-color: var(--primary-color);
+            color: #94a3b8;
+            text-align: center;
+            padding: 2.5rem 1rem;
+            font-size: 0.9rem;
+            margin-top: 5rem;
+            border-top: 4px solid var(--accent-color);
+        }
+
+        footer a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Unified Header Frame -->
+    <header>
+        <div class="header-top">
+            <div class="brand-logo">
+                <h1>ALJAZEERA TRANSITS</h1>
+                <h3>"Connecting Cargo. Delivering Trust."</h3>
+            </div>
+            
+            <div class="lang-container">
+                <label for="lang-switcher">Language / Luga:</label>
+                <select id="lang-switcher">
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                    <option value="fr">Français</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Fully Restructured Top Navigation Bar -->
+        <nav class="nav-links">
+            <a href="index.html" class="nav-item">Home</a>
+            <a href="abt.html" class="nav-item">About Us</a>
+            <a href="serv.html" class="nav-item">Services</a>
+            <a href="reqt.html" class="nav-item">Request Transport</a>
+            <a href="bcmt.html" class="nav-item">Become a Transporter</a>
+            <a href="lvtk.html" class="nav-item">Live Tracking</a>
+            <a href="pric.html" class="nav-item">Pricing</a>
+            <a href="faq.html" class="nav-item">FAQ</a>
+            <a href="cnt.html" class="nav-item">Contact Us</a>
+            <a href="lgn.html" class="nav-item">Login</a>
+            <a href="reg.html" class="nav-item">Register</a>
+            <a href="cd.html" class="nav-item">Customer Dashboard</a>
+            <a href="trdshb.html" class="nav-item">Transporter Dashboard</a>
+            <a href="admdshb.html" class="nav-item">Admin Dashboard</a>
+            <a href="t&C.html" class="nav-item">Terms & Conditions</a>
+            <a href="p&p.html" class="nav-item">Privacy Policy</a>
+        </nav>
+    </header>
+
+    <!-- Hero Showcase Section Wrapper -->
+    <section class="hero-section">
+        <div class="inner-content" id="hero-welcome-target" data-key="welcome">
+            <!-- Dynamic Welcome Injection Target Point -->
+            <p>Loading Platform Welcome Details...</p>
+        </div>
+    </section>
+
+    <!-- Main Workspace Content Terminal -->
+    <main class="content-box">
+        <div class="dynamic-sections-wrapper" id="content-body-target" data-key="intro">
+            <!-- Dynamic Features Grid & Logistics Pipeline Injection Target Point -->
+        </div>
+    </main>
+
+    <!-- Modern Footer Frame -->
+    <footer class="frame-replacement bottom-row">
+        <p>For more Information: <a href="cnt.html">Contact us</a></p>
+        <p style="margin-top: 0.5rem;">&#169; 2026 | Aljazeera Transits. All rights reserved.</p>
+    </footer>
+
+    <!-- Interactive Multilingual JavaScript Driver -->
+    <script>
+    const translations = {
+        en: {
+            welcome: `<p>Welcome to <b>Aljazeera Transits</b>, a platform that helps to connect customers needing cargo from various corners of the world as well as transporting cargo with payments through verified transporters to reach various corners of the world safely.</p>`,
+            intro: `
+                <h2>What Our Company Provides</h2>
+                <ul>
+                    <li><strong>Reliable Cross-Border Freight</strong><br>Dependable cargo transportation channels globally.</li>
+                    <li><strong>Trusted Transporter Networks</strong><br>Vetted operators handling secure local and international routes.</li>
+                </ul>
+
+                <h2>Features of our Platform</h2>
+                <ul>
+                    <li><strong>✓ Real-time Tracking</strong><br>Monitor coordinates instantly.</li>
+                    <li><strong>✓ Secure Payments</strong><br>Protected escrow infrastructure.</li>
+                    <li><strong>✓ Verified Transporters</strong><br>Strict compliance documentation reviews.</li>
+                    <li><strong>✓ Cross-border Logistics</strong><br>Customs-ready cross border clearing procedures.</li>
+                </ul>
+
+                <h2>How Our System Operates</h2>
+                <ol>
+                    <li><strong>Create Request</strong><br>Post shipment profiles.</li>
+                    <li><strong>Match Transporter</strong><br>Get assignments automatically.</li>
+                    <li><strong>Pay Securely</strong><br>Fund safe wallet hold accounts.</li>
+                    <li><strong>Track Shipment</strong><br>Watch operations live.</li>
+                    <li><strong>Confirm Delivery</strong><br>Verify clean receipt structures.</li>
+                    <li><strong>Customer Testimonials</strong><br>Rate transit experiences transparently.</li>
+                    <li><strong>Latest Deliveries</strong><br>Complete history logs updates.</li>
+                </ol>`
+        },
+        es: {
+            welcome: `<p>Bienvenido a <b>Aljazeera Transits</b>, una plataforma que ayuda a conectar a clientes que necesitan carga de varios rincones del mundo, así como a transportar carga con pagos a través de transportistas verificados para llegar a varios rincones del mundo de forma segura.</p>`,
+            intro: `
+                <h2>Lo que Ofrece Nuestra Empresa</h2>
+                <ul>
+                    <li><strong>Carga transfronteriza confiable</strong><br>Canales confiables de transporte de carga a nivel mundial.</li>
+                    <li><strong>Redes de transportistas de confianza</strong><br>Operadores verificados que manejan rutas locales e internacionales seguras.</li>
+                </ul>
+
+                <h2>Características de Nuestra Plataforma</h2>
+                <ul>
+                    <li><strong>✓ Seguimiento en tiempo real</strong><br>Monitoree las coordenadas al instante.</li>
+                    <li><strong>✓ Pagos seguros</strong><br>Infraestructura de depósito en garantía protegida.</li>
+                    <li><strong>✓ Transportistas verificados</strong><br>Revisiones estrictas de documentación de cumplimiento.</li>
+                    <li><strong>✓ Logística transfronteriza</strong><br>Procedimientos de despacho de aduanas listos.</li>
+                </ul>
+
+                <h2>Cómo Funciona Nuestro Sistema</h2>
+                <ol>
+                    <li><strong>Crear solicitud</strong><br>Publicar perfiles de envío.</li>
+                    <li><strong>Asignar transportista</strong><br>Obtenga asignaciones automáticamente.</li>
+                    <li><strong>Pagar de forma segura</strong><br>Fondos en cuentas seguras de depósito en garantía.</li>
+                    <li><strong>Rastrear el envío</strong><br>Vea las operaciones en vivo.</li>
+                    <li><strong>Confirmar la entrega</strong><br>Verifique las estructuras de recibo limpio.</li>
+                    <li><strong>Testimonios de clientes</strong><br>Califique las experiencias de tránsito de forma transparente.</li>
+                    <li><strong>Últimas entregas</strong><br>Actualizaciones de registros de historial completos.</li>
+                </ol>`
+        },
+        fr: {
+            welcome: `<p>Bienvenue sur <b>Aljazeera Transits</b>, une plateforme qui aide à connecter les clients ayant besoin de fret aux quatre coins du monde, ainsi qu'à transporter des marchandises avec des paiements via des transporteurs vérifiés pour atteindre les quatre coins du monde en toute sécurité.</p>`,
+            intro: `
+                <h2>Ce Que Notre Entreprise Fournit</h2>
+                <ul>
+                    <li><strong>Fret transfrontalier fiable</strong><br>Canaux de transport de fret fiables à l'échelle mondiale.</li>
+                    <li><strong>Réseaux de transporteurs de confiance</strong><br>Opérateurs agréés gérant des itinéraires locaux et internationaux sécurisés.</li>
+                </ul>
+
+                <h2>Fonctionnalités de Notre Plateforme</h2>
+                <ul>
+                    <li><strong>✓ Suivi en temps réel</strong><br>Surveillez instantanément les coordonnées de transit.</li>
+                    <li><strong>✓ Paiements sécurisés</strong><br>Infrastructure de compte séquestre protégée.</li>
+                    <li><strong>✓ Transporteurs vérifiés</strong><br>Examens stricts des documents de conformité.</li>
+                    <li><strong>✓ Logistique transfrontalière</strong><br>Procédures de dédouanement prêtes pour les frontières.</li>
+                </ul>
+
+                <h2>Comment Fonctionne Notre Système</h2>
+                <ol>
+                    <li><strong>Créer une demande</strong><br>Publier des profils d'expédition.</li>
+                    <li><strong>Trouver un transporteur</strong><br>Obtenez des affectations automatiquement.</li>
+                    <li><strong>Payer en toute sécurité</strong><br>Financez des comptes de retenue séquestre sécurisés.</li>
+                    <li><strong>Suivre l'expédition</strong><br>Suivez les opérations en direct.</li>
+                    <li><strong>Confirmer la livraison</strong><br>Vérifiez les structures de réception propres.</li>
+                    <li><strong>Témoignages de clients</strong><br>Évaluez les expériences de transit en toute transparence.</li>
+                    <li><strong>Dernières livraisons</strong><br>Mises à jour complètes des journaux d'historique.</li>
+                </ol>`
+        }
+    };
+
+    const switcher = document.getElementById('lang-switcher');
+
+    function changeLanguage(lang) {
+        document.querySelectorAll('[data-key]').forEach(element => {
+            const key = element.getAttribute('data-key');
+            if (translations[lang] && translations[lang][key]) {
+                element.innerHTML = translations[lang][key]; 
+            }
+        });
+        localStorage.setItem('preferredLanguage', lang);
+    }
+
+    switcher.addEventListener('change', (e) => {
+        changeLanguage(e.target.value);
+    });
+
+    const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+    switcher.value = savedLang;
+    changeLanguage(savedLang);
+    </script>
+</body>
+</html>

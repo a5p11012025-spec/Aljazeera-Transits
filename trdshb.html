@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRANSPORTER DASHBOARD | Aljazeera Transits</title>
+    <link rel="stylesheet" type="text/css" href="s1.css">
+    <style>
+        /* Base Setup & Layout Sync */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f1f5f9;
+            color: #1e293b;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* 1. TRANSPORTER SIDEBAR PANEL (Teal Accent Architecture) */
+        .sidebar {
+            width: 280px;
+            background-color: #0b1e36;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 10;
+            padding-bottom: 20px;
+        }
+
+        .sidebar-brand {
+            padding: 24px 20px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            text-decoration: none;
+            color: #fff;
+            display: block;
+        }
+
+        .sidebar-brand span {
+            color: #00a896; /* Fleet Portal Teal */
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 20px 0;
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+
+        .menu-item a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 20px;
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .menu-item.active a, .menu-item a:hover {
+            background-color: rgba(0, 168, 150, 0.15);
+            color: #00a896;
+            border-left: 4px solid #00a896;
+            padding-left: 16px;
+        }
+
+        .menu-divider {
+            height: 1px;
+            background-color: rgba(255,255,255,0.08);
+            margin: 15px 0;
+        }
+
+        /* 2. MAIN SYSTEM WORKSPACE */
+        .main-content {
+            margin-left: 280px;
+            flex-grow: 1;
+            padding: 40px;
+            max-width: 1400px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .page-header {
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 15px;
+        }
+
+        .page-header h1 {
+            font-size: 1.7rem;
+            color: #0b1e36;
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .driver-status {
+            background-color: #fff;
+            padding: 8px 16px;
+            border: 1px solid #e2e8f0;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #475569;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .status-dot {
+            width: 9px;
+            height: 9px;
+            background-color: #22c55e;
+            border-radius: 50%;
+        }
+
+        /* 3. CARRIER STAT TILES BAR */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-bottom: 35px;
+        }
+
+        .stat-tile {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.01);
+        }
+
+        .stat-tile h3 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: #64748b;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .stat-val {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #0b1e36;
+        }
+
+        .stat-subtext {
+            font-size: 0.8rem;
+            color: #22c55e;
+            margin-top: 4px;
+            font-weight: 500;
+        }
+
+        /* 4. DOUBLE COLUMN PANELS LAYER */
+        .portal-layout {
+            display: grid;
+            grid-template-columns: 1.6fr 1.4fr;
+            gap: 30px;
+            margin-bottom: 35px;
+        }
+
+        .panel-card {
+            background: #fff;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            padding: 25px;
+        }
+
+        .panel-card h2 {
+            font-size: 1.15rem;
+            color: #0b1e36;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .badge-live {
+            background-color: #e0f2fe;
+            color: #0369a1;
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-weight: bold;
+        }
+
+        /* Open Freight Lane Entries */
+        .load-item {
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 18px;
+            margin-bottom: 15px;
+            transition: border-color 0.2s;
+        }
+
+        .load-item:hover {
+            border-color: #00a896;
+        }
+
+        .load-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .route-summary {
+            font-weight: 600;
+            color: #1e293b;
+            font-size: 0.95rem;
+        }
+
+        .payout-tag {
+            color: #00a896;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .load-specs {
+            font-size: 0.85rem;
+            color: #64748b;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        .btn-bid {
+            display: inline-block;
+            background-color: #00a896;
+            color: #fff;
+            padding: 8px 16px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background 0.2s;
+            text-align: center;
+        }
+
+        .btn-bid:hover {
+            background-color: #008274;
+        }
+
+        /* Active Fleet Assets Track Layout */
+        .truck-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .truck-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .truck-row:last-child {
+            border-bottom: none;
+        }
+
+        .truck-meta h4 {
+            font-size: 0.9rem;
+            color: #1e293b;
+        }
+
+        .truck-meta p {
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+
+        .status-indicator {
+            font-size: 0.75rem;
+            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: 4px;
+        }
+
+        .status-moving { background-color: #dcfce7; color: #15803d; }
+        .status-idle { background-color: #f1f5f9; color: #475569; }
+
+        /* 5. FULL VIEWPORT DATA TABLE CONSOLE */
+        .table-card {
+            background: #fff;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            margin-bottom: 35px;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        .jobs-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        .jobs-table th {
+            background-color: #f8fafc;
+            color: #475569;
+            padding: 14px 16px;
+            font-weight: 600;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .jobs-table td {
+            padding: 16px;
+            border-bottom: 1px solid #e2e8f0;
+            color: #334155;
+        }
+
+        .jobs-table tr:hover td {
+            background-color: #f8fafc;
+        }
+
+        /* 6. SYSTEM COMPLIANCE FOOTER TERMINAL */
+        .dashboard-footer {
+            margin-top: auto;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 25px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        .dashboard-footer a {
+            color: #0b1e36;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .dashboard-footer a:hover {
+            color: #00a896;
+            text-decoration: underline;
+        }
+
+        /* Responsive Breakpoints Layer Collapse */
+        @media (max-width: 1200px) {
+            .portal-layout { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar { display: none; }
+            .main-content { margin-left: 0; padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. UNIFIED TRANSPORTER OPERATIONS SIDEBAR CONSOLE -->
+    <nav class="sidebar">
+        <a href="index.html" class="sidebar-brand">Aljazeera<span>Transits</span></a>
+        
+        <ul class="sidebar-menu">
+            <li class="menu-item active"><a href="td.html">🚛 Dashboard Home</a></li>
+            <li class="menu-item"><a href="#open-freight">🔍 Available Jobs</a></li>
+            <li class="menu-item"><a href="#fleet-assets">🛣️ My Deliveries</a></li>
+            <li class="menu-item"><a href="#earnings">📊 Earnings Reports</a></li>
+            <li class="menu-item"><a href="#wallet">🛡️ Escrow Wallet</a></li>
+            <li class="menu-item"><a href="vr.html">⚙️ Vehicle Management</a></li>
+            <li class="menu-item"><a href="#documents">📄 Compliance Docs</a></li>
+            <li class="menu-item"><a href="#support">🎧 Dispatcher Support</a></li>
+            
+            <div class="menu-divider"></div>
+            
+            <li class="menu-item"><a href="index.html" style="color: #ef4444;">← Return Home</a></li>
+        </ul>
+    </nav>
+
+    <!-- 2. MAIN WORKSPACE VIEWPORT -->
+    <main class="main-content">
+        
+        <!-- SURFACE HEADER RUN CONTROLS -->
+        <header class="page-header">
+            <div>
+                <h1>Transporter Fleet Console</h1>
+                <p style="color: white; font-size: 0.95rem; margin-top: 2px;">Manage asset telemetry, route calculations, and secure freight escrow contracts.</p>
+            </div>
+            <div class="header-meta">
+                <span style="background-color: #fff; padding: 8px 16px; border: 1px solid #e2e8f0; border-radius: 6px; font-size: 0.85rem; font-weight: 600; color: #475569;">Carrier ID: #TX-4402</span>
+                <div class="driver-status">
+                    <span class="status-dot"></span>
+                    <span>Active Duty</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- 3. CARRIER STAT TILES LAYER -->
+        <section class="metrics-grid" id="earnings">
+            <div class="stat-tile">
+                <h3>Active En-Route Loads</h3>
+                <div class="stat-val">2 Trucks</div>
+                <div class="stat-subtext" style="color: #3b82f6;">Tracking Assets Online</div>
+            </div>
+            <div class="stat-tile" style="border-left: 4px solid #00a896;" id="wallet">
+                <h3>Locked Escrow Balance</h3>
+                <div class="stat-val">2,875,000 TZS</div>
+                <div class="stat-subtext">Awaiting Delivery Proof</div>
+            </div>
+            <div class="stat-tile">
+                <h3>Cleared Payouts (Month)</h3>
+                <div class="stat-val">8,550,000 TZS</div>
+                <div class="stat-subtext">24 Manifests Finalized</div>
+            </div>
+            <div class="stat-tile">
+                <h3>Fleet Safety Score</h3>
+                <div class="stat-val">98.4%</div>
+                <div class="stat-subtext">Premium Tier Account</div>
+            </div>
+        </section>
+
+        <!-- 4. DOUBLE COLUMN OPERATIONS GRID -->
+        <div class="portal-layout">
+            
+            <!-- LEFT PANEL: CARGO OPEN BIDDING MATRIX -->
+            <section class="panel-card" id="open-freight">
+                <h2>Available Cargo Lanes <span class="badge-live">OPEN BIDDING POOL</span></h2>
+                
+                <!-- Load Entry 1 -->
+                <div class="load-item">
+                    <div class="load-header">
+                        <div class="route-summary">Tanga Port (TZ) ➔ Industrial Area, Kampala (UG)</div>
+                        <div class="payout-tag">3,000,000 TZS</div>
+                    </div>
+                    <div class="load-specs">
+                        Commodity: <strong>General Dry Cargo Bulk</strong><br>
+                        Weight Parameters: 24.5 Metric Tons • Target Pickup Window: Immediate
+                    </div>
+                    <a href="#" class="btn-bid">Submit Direct Quote</a>
+                </div>
+
+                <!-- Load Entry 2 -->
+                <div class="load-item">
+                    <div class="load-header">
+                        <div class="route-summary">Mombasa Port (KE) ➔ Nairobi Distribution Hub (KE)</div>
+                        <div class="payout-tag">1,625,000 TZS</div>
+                    </div>
+                    <div class="load-specs">
+                        Commodity: <strong>Refrigerated Goods / Perishables</strong><br>
+                        Weight Parameters: 14.0 Metric Tons • Requires Active Temp Control
+                    </div>
+                    <a href="#" class="btn-bid">Submit Direct Quote</a>
+                </div>
+            </section>
+
+            <!-- RIGHT PANEL: FLEET STATUS TRACKER -->
+            <aside class="panel-card" id="fleet-assets">
+                <h2>Active Fleet Assets</h2>
+                
+                <div class="truck-list">
+                    <div class="truck-row">
+                        <div class="truck-meta">
+                            <h4>Asset #T-09 (Semi-Trailer)</h4>
+                            <p>Manifest Ref: #AJ-89771 • Highway Corridor</p>
+                        </div>
+                        <span class="status-indicator status-moving">En Route</span>
+                    </div>
+
+                    <div class="truck-row">
+                        <div class="truck-meta">
+                            <h4>Asset #T-14 (Reefer Box)</h4>
+                            <p>Manifest Ref: #AJ-86540 • Offloaded Cleanly</p>
+                        </div>
+                        <span class="status-indicator status-idle">At Hub Depot</span>
+                    </div>
+
+                    <div class="truck-row">
+                        <div class="truck-meta">
+                            <h4>Asset #T-22 (Flatbed Heavy)</h4>
+                            <p>No Active Assignment • Standby Pool</p>
+                        </div>
+                        <span class="status-indicator status-idle">Standby</span>
+                    </div>
+                </div>
+            </aside>
+
+        </div>
+
+        <!-- 5. CENTRAL FREIGHT IMMEDIATE DISPATCH BOARD -->
+        <section class="table-card">
+            <h2 style="font-size: 1.15rem; color: #0b1e36; margin-bottom: 20px;">Immediate Dispatch Board (Fixed Rates)</h2>
+            <div class="table-wrapper">
+                <table class="jobs-table">
+                    <thead>
+                        <tr>
+                            <th>Manifest Code</th>
+                            <th>Route Segments</th>
+                            <th>Cargo Parameters</th>
+                            <th>Guaranteed Payout</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>#AJ-9834-TZ</strong></td>
+                            <td>Dar es Salaam Port ➔ Morogoro Hub</td>
+                            <td>22 Metric Tons (Cement)</td>
+                            <td>850,000 TZS</td>
+                            <td><a href="lvtk.html" class="btn-bid" style="padding: 6px 12px; font-size: 0.8rem;">Accept Route</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>#AJ-9904-TZ</strong></td>
+                            <td>Tanga Port ➔ Arusha Logistics Hub</td>
+                            <td>18 Metric Tons (Electronics)</td>
+                            <td>1,200,000 TZS</td>
+                            <td><a href="lvtk.html" class="btn-bid" style="padding: 6px 12px; font-size: 0.8rem;">Accept Route</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 6. UNIFIED COMPLIANCE FOOTER TERMINAL -->
+        <footer class="dashboard-footer">
+            For more Information or operational assistance: <a href="#support">Contact Hub Support</a>. Or else: <a href="index.html">Return to Home Page</a><br>
+            &copy; 2026 | Aljazeera Transits | Central Freight Networks & Telemetry Logistics. All rights reserved.
+        </footer>
+
+    </main>
+
+</body>
+</html>

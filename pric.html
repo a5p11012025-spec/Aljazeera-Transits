@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transparent Pricing | Aljazeera Transits</title>
+    <link rel="stylesheet" type="text/css" href="s1.css">
+    <style>
+        /* Base Setup & Reset */
+        * {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Hero Header Section */
+        .pricing-hero {
+            background: linear-gradient(rgba(14, 34, 61, 0.9), rgba(14, 34, 61, 0.95)), 
+                        url('https://images.unsplash.com/photo-1501707305551-9b2adda5e527?auto=format&fit=crop&q=80&w=1200') no-repeat center center/cover;
+            color: #fff;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .pricing-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .pricing-hero p {
+            color: #cbd5e1;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Core Workspace Container */
+        .pricing-container {
+            max-width: 1140px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1.2fr 1.8fr;
+            gap: 40px;
+        }
+
+        /* LEFT COLUMN: LIVE ESTIMATOR CALCULATOR */
+        .calculator-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            padding: 30px;
+            height: fit-content;
+        }
+
+        .calculator-card h2 {
+            color: #0e223d;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 8px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 18px;
+        }
+
+        label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #475569;
+            margin-bottom: 6px;
+        }
+
+        input, select {
+            padding: 10px 14px;
+            font-size: 0.95rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            outline: none;
+        }
+
+        input:focus, select:focus {
+            border-color: #ff9900;
+        }
+
+        /* Dynamic Quote Output Box */
+        .quote-display {
+            background-color: #0e223d;
+            color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .quote-display p {
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .quote-display .price {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: #ff9900;
+            margin: 5px 0;
+        }
+
+        /* RIGHT COLUMN: CORE PROTECTION & TIERS */
+        .tier-info-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .escrow-feature-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            border-left: 5px solid #ff9900;
+        }
+
+        .escrow-feature-card h3 {
+            color: #0e223d;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .escrow-feature-card p {
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        /* Standard Baseline Pricing Grid Table */
+        .pricing-table-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+        }
+
+        .pricing-table-card h3 {
+            color: #0e223d;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        th, td {
+            padding: 14px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        th {
+            background-color: #f8fafc;
+            color: #0e223d;
+            font-weight: bold;
+        }
+
+        td strong {
+            color: #22c55e;
+        }
+
+        .cta-banner {
+            background-color: #e2e8f0;
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .cta-banner h4 {
+            color: #0e223d;
+            margin-bottom: 10px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background-color: #ff9900;
+            color: #fff;
+            padding: 10px 24px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background 0.2s;
+        }
+
+        .cta-btn:hover {
+            background-color: #e08800;
+        }
+
+        /* Responsive UI Adjustments */
+        @media (max-width: 900px) {
+            .pricing-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. HERO TEXT SECTION -->
+    <header class="pricing-hero">
+        <h1>Transparent Logistics Pricing</h1>
+        <p>No hidden fees. Calculate your shipping estimates instantly and secure transit jobs with zero risk.</p>
+    </header>
+
+    <!-- 2. CORE PRICING WORKSPACE WORKSPACE -->
+    <main class="pricing-container">
+        
+        <!-- LEFT COMPONENT: LIVE TRANSIT COST ESTIMATOR -->
+        <section class="calculator-card">
+            <h2>Cost Estimator</h2>
+            <form id="calc-form">
+                
+                <div class="form-group">
+                    <label for="distance">Estimated Distance (in km)</label>
+                    <input type="number" id="distance" placeholder="e.g., 450" min="1" value="100" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="weight">Cargo Weight (Metric Tons)</label>
+                    <input type="number" id="weight" placeholder="e.g., 15" min="1" value="5" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="truck-type">Required Trailer Fleet Config</label>
+                    <select id="truck-type">
+                        <option value="1.0">Standard Flatbed Trailer (Base Rate)</option>
+                        <option value="1.3">Enclosed Box Cargo Van (+30%)</option>
+                        <option value="1.5">Refrigerated Reefer Truck (+50%)</option>
+                    </select>
+                </div>
+
+                <!-- Live Dynamic Output Dashboard -->
+                <div class="quote-display">
+                    <p>Estimated Escrow Deposit</p>
+                    <div class="price" id="computed-price">$0.00</div>
+                    <span style="font-size: 0.75rem; color: #cbd5e1;">*Includes network safety verification fees</span>
+                </div>
+            </form>
+        </section>
+
+        <!-- RIGHT COMPONENT: ESCROW SAFETY INFO & ROUTE TIERS -->
+        <section class="tier-info-panel">
+            
+            <!-- Safe Escrow Protection Feature Card -->
+            <div class="escrow-feature-card">
+                <h3>🛡️ How Aljazeera Escrow Protects Your Money</h3>
+                <p>When you accept a transporter's bid, your calculated funds are placed securely in our network escrow hold. The driver can see that the payment is guaranteed, but the funds are <strong>only released</strong> into their carrier wallet once you confirm safe delivery at the target destination point.</p>
+            </div>
+
+            <!-- Standard Reference Baseline Rates Table -->
+            <div class="pricing-table-card">
+                <h3>Baseline Transit Reference Metrics</h3>
+                <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 15px;">Sample operational baselines for common cross-border routes:</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Corridor Route</th>
+                            <th>Avg. Distance</th>
+                            <th>Platform Base Rate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Dar es Salaam to Tanga</td>
+                            <td>~350 km</td>
+                            <td><strong>From $450</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Tanga to Mombasa (Cross-Border)</td>
+                            <td>~160 km</td>
+                            <td><strong>From $320</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Dar es Salaam to Arusha</td>
+                            <td>~630 km</td>
+                            <td><strong>From $780</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Regional Inter-State Lane (Long Haul)</td>
+                            <td>1000+ km</td>
+                            <td><strong>Custom Bid Matching</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Call to Action Footer Banner -->
+            <div class="cta-banner">
+                <h4>Need a strict legally bound binding quote?</h4>
+                <p style="font-size: 0.9rem; color: #555; margin-bottom: 15px;">Post your detailed specs to receive competitive bids from verified carriers.</p>
+                <a href="reqt.html" class="cta-btn">Post a Request Now</a>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- 3. LIVE CALCULATOR SCRIPT LOGIC -->
+    <script>
+        const distanceInput = document.getElementById('distance');
+        const weightInput = document.getElementById('weight');
+        const truckSelect = document.getElementById('truck-type');
+        const priceDisplay = document.getElementById('computed-price');
+
+        function calculateEstimate() {
+            const distance = parseFloat(distanceInput.value) || 0;
+            const weight = parseFloat(weightInput.value) || 0;
+            const truckModifier = parseFloat(truckSelect.value) || 1.0;
+
+            // Simple logistics math formula: Base fee ($50) + ($0.80 per km) + ($15 per ton) multiplied by truck type modifier
+            if (distance > 0 && weight > 0) {
+                const baseCost = 50 + (distance * 0.85) + (weight * 18);
+                const finalCost = baseCost * truckModifier;
+                
+                // Display price safely formatted to USD currency display
+                priceDisplay.textContent = '$' + finalCost.toFixed(2);
+            } else {
+                priceDisplay.textContent = '$0.00';
+            }
+        }
+
+        // Attach event listeners to update price instantly when user changes inputs
+        distanceInput.addEventListener('input', calculateEstimate);
+        weightInput.addEventListener('input', calculateEstimate);
+        truckSelect.addEventListener('change', calculateEstimate);
+
+        // Run calculation once on load initialization
+        calculateEstimate();
+    </script>
+
+    <hr>
+        <footer class="frame-replacement bottom-row">
+            For more Information: <a href="">Contact us</a>. Or else: <a href="index.html">Return to Home Page</a><br>
+            &#169; 2026 | Aljazeera Transits<br>
+            All rights reserved.
+        </footer>
+
+</body>
+</html>

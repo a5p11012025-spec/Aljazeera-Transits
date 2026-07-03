@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | Aljazeera Transits</title>
+    <link rel="stylesheet" type="text/css" href="s1.css">
+    <style>
+        /* Base Setup & Reset */
+        * {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Hero Banner */
+        .services-hero {
+            background: linear-gradient(rgba(14, 34, 61, 0.85), rgba(14, 34, 61, 0.95)), 
+                        url('https://images.unsplash.com/photo-1516528387618-afa90b13e000?auto=format&fit=crop&q=80&w=1200') no-repeat center center/cover;
+            color: #fff;
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .services-hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+        }
+
+        .services-hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            color: #cbd5e1;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            color: #0e223d;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+        }
+
+        /* Services Grid Layout */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .service-card {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .service-content {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .service-content h3 {
+            color: #0e223d;
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+
+        .service-content p {
+            color: #555;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        /* Feature Badges inside Services */
+        .feature-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background-color: #f1f5f9;
+            color: #0e223d;
+            font-size: 0.8rem;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .service-btn {
+            display: inline-block;
+            background-color: #0e223d;
+            color: #fff;
+            text-align: center;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background 0.2s ease;
+        }
+
+        .service-btn:hover {
+            background-color: #ff9900;
+        }
+
+        /* How It Works Subsection */
+        .how-it-works {
+            background: #fff;
+            padding: 50px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .step-item {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background-color: #ff9900;
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: bold;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+        }
+
+        .step-item h4 {
+            color: #0e223d;
+            margin-bottom: 8px;
+        }
+
+        .step-item p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            .services-hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="services-hero">
+        <h1>Our Transit Services</h1>
+        <p>Explore safe, seamless, and fully transparent cargo logistics solutions engineered for global borders.</p>
+    </header>
+
+    <main class="container">
+
+        <h2 class="section-title">What We Offer</h2>
+        <div class="services-grid">
+
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=400" alt="Cross Border Freight Truck" class="service-img">
+                <div class="service-content">
+                    <h3>Cross-Border Logistics</h3>
+                    <p>Easily ship bulk cargo and commercial freight across international lines. We connect you with verified long-haul transporters equipped to manage regional customs documentation smoothly.</p>
+                    <div class="feature-tags">
+                        <span class="tag">✓ Custom clearance assistance</span>
+                        <span class="tag">✓ Heavy freight</span>
+                    </div>
+                    <a href="crtsh.html" class="service-btn">Book Cargo Space</a>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-content">
+                    <h3>Secure Escrow Payments</h3>
+                    <p>Protect your capital. Funds allocated for your transit job remain secured within our network platform and are only released to the transporter when you confirm safe receipt at destination points.</p>
+                    <div class="feature-tags">
+                        <span class="tag">✓ Fraud prevention</span>
+                        <span class="tag">✓ Milestone releases</span>
+                    </div>
+                    <a href="abt.html" class="service-btn">Learn More About Security</a>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&q=80&w=400" alt="Fleet tracking dashboard" class="service-img">
+                <div class="service-content">
+                    <h3>Freight Matching for Fleets</h3>
+                    <p>Are you a verified carrier looking for regular jobs? Access a live, interactive portal matching open trucks with clients needing cargo moved right from your regional lanes.</p>
+                    <div class="feature-tags">
+                        <span class="tag">✓ Instant load boards</span>
+                        <span class="tag">✓ Direct routing optimizations</span>
+                    </div>
+                    <a href="sh.html" class="service-btn">Join as Transporter</a>
+                </div>
+            </div>
+
+        </div>
+
+        <section class="how-it-works">
+            <h2 class="section-title" style="margin-bottom: 10px;">How It Works</h2>
+            <p style="text-align: center; color: #666; max-width: 600px; margin: 0 auto 30px;">Four quick steps to manage logistics transparently.</p>
+            
+            <div class="steps-container">
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <h4>Post a Request</h4>
+                    <p>Enter cargo sizes, pick-up points, and destination details safely into our dashboard.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <h4>Match Transporter</h4>
+                    <p>Receive competitive bids from highly rated, verified logistics teams instantly.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <h4>Secure Funds</h4>
+                    <p>Deposit payment into security escrow. Drivers start moving knowing payment is guaranteed.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">4</div>
+                    <h4>Track & Confirm</h4>
+                    <p>Monitor updates dynamically on maps and unlock final payouts upon delivery verification.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <hr>
+        <footer class="frame-replacement bottom-row">
+            For more Information: <a href="">Contact us</a>. Or else: <a href="index.html">Return to Home Page</a><br>
+            &#169; 2026 | Aljazeera Transits<br>
+            All rights reserved.
+        </footer>
+
+</body>
+</html>

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Aljazeera Transits</title>
+    <link rel="stylesheet" type="text/css" href="s1.css">
+    <style>
+        /* Base Setup & Reset */
+        * {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Hero Header Section */
+        .contact-hero {
+            background: linear-gradient(rgba(14, 34, 61, 0.9), rgba(14, 34, 61, 0.95)), 
+                        url('https://images.unsplash.com/photo-1534536281715-e28d76689b4d?auto=format&fit=crop&q=80&w=1200') no-repeat center center/cover;
+            color: #fff;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .contact-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .contact-hero p {
+            color: #cbd5e1;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Main Form & Grid Workspace */
+        .contact-container {
+            max-width: 1140px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1.2fr 1.8fr;
+            gap: 40px;
+        }
+
+        /* LEFT COLUMN: CHANNELS & DIRECT CARDS */
+        .info-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .channel-card {
+            background: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .channel-icon {
+            font-size: 1.8rem;
+            background: #f1f5f9;
+            padding: 10px;
+            border-radius: 8px;
+            line-height: 1;
+        }
+
+        .channel-details h3 {
+            color: #0e223d;
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+        }
+
+        .channel-details p {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .channel-details strong {
+            color: #1e293b;
+            font-size: 0.95rem;
+        }
+
+        /* Map Embed Container inside left sidebar */
+        .map-wrapper {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            overflow: hidden;
+            height: 250px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .map-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* RIGHT COLUMN: INTERACTIVE INPUT FORM CARD */
+        .form-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            padding: 35px;
+        }
+
+        .form-card h2 {
+            color: #0e223d;
+            font-size: 1.6rem;
+            margin-bottom: 8px;
+        }
+
+        .form-card > p {
+            color: #64748b;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+        }
+
+        /* Form Layout Sizing Rules */
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        .form-group.no-margin {
+            margin-bottom: 0;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #475569;
+            margin-bottom: 6px;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            padding: 12px 16px;
+            font-size: 0.95rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: #ff9900;
+            box-shadow: 0 0 0 3px rgba(255, 153, 0, 0.15);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Primary Action Trigger Button */
+        .submit-btn {
+            background-color: #ff9900;
+            color: #fff;
+            border: none;
+            padding: 14px 32px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+            width: fit-content;
+        }
+
+        .submit-btn:hover {
+            background-color: #e08800;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 900px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. HERO CONTENT SECTION -->
+    <header class="contact-hero">
+        <h1>Connect With Logistics Operations</h1>
+        <p>Have questions about cross-border documentation, secure corridor matching, or active escrow holds? Get in touch with us.</p>
+    </header>
+
+    <!-- 2. CORE WORKSPACE WORKSPACE -->
+    <main class="contact-container">
+        
+        <!-- LEFT SIDEBAR: CHANNELS & DETAILS -->
+        <section class="info-sidebar">
+            
+            <!-- Phone Support Card -->
+            <div class="channel-card">
+                <div class="channel-icon">📞</div>
+                <div class="channel-details">
+                    <h3>24/7 Mobile Support</h3>
+                    <p>For urgent route routing changes or driver roadside assistance:</p>
+                    <strong>+255 XXX XXX XXX</strong>
+                    <br>
+                    <h3>24/7 Whatsapp Support</h3>
+                    <p>For urgent route routing changes or driver roadside Online assistance:</p>
+                    <strong>+255 XXX XXX XXX</strong>
+                </div>
+            </div>
+
+            <!-- Email Card -->
+            <div class="channel-card">
+                <div class="channel-icon">✉️</div>
+                <div class="channel-details">
+                    <h3>Electronic Support Desk (e-mail)</h3>
+                    <p>For custom bulk freight quotes and compliance questions:</p>
+                    <strong>ops@aljazeeratransits.com</strong>
+                    <h3>Instagram Support</h3>
+                    <p>For custom bulk freight quotes and compliance questions:</p>
+                    <strong>@ AjazeeraTransits_org</strong>
+                </div>
+            </div>
+
+            <!-- Mini Embedded Google Map Workspace Layer -->
+            <div class="map-wrapper">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.5126848039755!2d39.27434571168128!3d-6.82900769314051!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x185c4b18274384b7%3A0x7df61a9c8b746864!2sDar%20es%20Salaam%20Port!5e0!3m2!1sen!2stz!4v1710000000000!5m2!1sen!2stz" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+
+        </section>
+
+        <!-- RIGHT CANVAS: EMAIL DISPATCH FORM -->
+        <section class="form-card">
+            <h2>Send a Secure Message</h2>
+            <p>Fill out the parameters below and a corridor manager will follow up with your trade firm within 2 business hours.</p>
+            
+            <form action="#" method="POST">
+                
+                <div class="form-row">
+                    <div class="form-group no-margin">
+                        <label for="user-name">Your Full Name</label>
+                        <input type="text" id="user-name" name="name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group no-margin">
+                        <label for="user-email">Business Email Address</label>
+                        <input type="email" id="user-email" name="email" placeholder="name@company.com" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group no-margin">
+                        <label for="user-phone">Mobile Phone (Optional)</label>
+                        <input type="tel" id="user-phone" name="phone" placeholder="e.g., +255 712...">
+                    </div>
+                    <div class="form-group no-margin">
+                        <label for="dept-select">Target Routing Department</label>
+                        <select id="dept-select" name="department" required>
+                            <option value="general">General Cargo Inquiries</option>
+                            <option value="escrow">Escrow Security & Payments</option>
+                            <option value="carrier">Transporter Verification</option>
+                            <option value="fleet">Emergency Fleet Roadside Help</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="msg-subject">Message Subject</label>
+                    <input type="text" id="msg-subject" name="subject" placeholder="e.g., Quote Request for 20 Metric Tons to Tanga Corridor" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="msg-body">Detailed Requirements or Inquiry</label>
+                    <textarea id="msg-body" name="message" placeholder="Please list out exact freight dimension limits, clearing weights, or account bottlenecks..." required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Dispatch Message</button>
+
+            </form>
+        </section>
+
+    </main>
+
+    <hr>
+        <footer class="frame-replacement bottom-row">
+            For more Information: <a href="">Contact us</a>. Or else: <a href="index.html">Return to Home Page</a><br>
+            &#169; 2026 | Aljazeera Transits<br>
+            All rights reserved.
+        </footer>
+
+</body>
+</html>

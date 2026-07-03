@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help & Support Desk | Aljazeera Transits</title>
+    <style>
+        /* Base Setup & Shared Layout Sync */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f1f5f9;
+            color: #1e293b;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* SIDEBAR PANELS */
+        .sidebar {
+            width: 260px;
+            background-color: #0e223d;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 10;
+        }
+
+        .sidebar-brand {
+            padding: 24px 20px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .sidebar-brand span {
+            color: #ff9900;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 20px 0;
+            flex-grow: 1;
+        }
+
+        .menu-item a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 20px;
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .menu-item.active a, .menu-item a:hover {
+            background-color: rgba(255, 153, 0, 0.15);
+            color: #ff9900;
+            border-left: 4px solid #ff9900;
+            padding-left: 16px;
+        }
+
+        /* MAIN CONTENT AREA */
+        .main-content {
+            margin-left: 260px;
+            flex-grow: 1;
+            padding: 40px;
+            max-width: 1200px;
+        }
+
+        .page-header {
+            margin-bottom: 30px;
+        }
+
+        .page-header h1 {
+            font-size: 1.7rem;
+            color: #0e223d;
+        }
+
+        /* SUPPORT GRID SPLIT LAYOUT */
+        .support-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1.8fr;
+            gap: 30px;
+        }
+
+        .support-card {
+            background: #fff;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .support-card h2 {
+            font-size: 1.15rem;
+            color: #0e223d;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        /* Form Controls styling */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #475569;
+            margin-bottom: 6px;
+        }
+
+        .form-control {
+            padding: 11px 14px;
+            font-size: 0.9rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            outline: none;
+            background: #fff;
+        }
+
+        .form-control:focus {
+            border-color: #ff9900;
+        }
+
+        textarea.form-control {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .btn-submit-ticket {
+            width: 100%;
+            padding: 12px;
+            background-color: #ff9900;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-submit-ticket:hover {
+            background-color: #e08800;
+        }
+
+        /* Ticket Records List Rows Layout */
+        .ticket-row {
+            padding: 16px 0;
+            border-bottom: 1px solid #f1f5f9;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .ticket-row:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .ticket-info h4 {
+            font-size: 0.95rem;
+            color: #1e293b;
+            font-weight: 600;
+        }
+
+        .ticket-info p {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-top: 3px;
+        }
+
+        /* State Badges inside Ticket list */
+        .ticket-status {
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .status-open { background-color: #e0f2fe; color: #0369a1; }
+        .status-resolved { background-color: #dcfce7; color: #15803d; }
+
+        @media (max-width: 992px) {
+            .support-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar { display: none; }
+            .main-content { margin-left: 0; padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SIDEBAR NAV LINK STRIP -->
+    <nav class="sidebar">
+        <div class="sidebar-brand">
+            Aljazeera<span>Transits</span>
+        </div>
+        <ul class="sidebar-menu">
+            <li class="menu-item"><a href="dashboard.html">📊 Main Dashboard</a></li>
+            <li class="menu-item"><a href="create-shipment.html">📦 Create Shipment</a></li>
+            <li class="menu-item"><a href="my-shipments.html">🚚 My Shipments</a></li>
+            <li class="menu-item"><a href="invoices.html">🧾 Invoices</a></li>
+            <li class="menu-item"><a href="payments.html">🛡️ Payments</a></li>
+            <li class="menu-item"><a href="tracking.html">📍 Tracking</a></li>
+            <li class="menu-item"><a href="notifications.html">🔔 Notifications</a></li>
+            <li class="menu-item active"><a href="support.html">💬 Support</a></li>
+        </ul>
+    </nav>
+
+    <!-- LIVE HELPDESK ENGINE WORKSPACE -->
+    <main class="main-content">
+        <header class="page-header">
+            <h1>Help & Support Desk</h1>
+            <p style="color: #64748b; font-size: 0.95rem; margin-top: 2px;">Submit priority clearance logs or get in touch directly with our transit coordinators.</p>
+        </header>
+
+        <div class="support-grid">
+            
+            <!-- LEFT PANEL: OPEN A DISPUTE / INQUIRY TICKET -->
+            <section>
+                <div class="support-card">
+                    <h2>Submit an Operational Ticket</h2>
+                    <form onsubmit="event.preventDefault(); alert('Support case submitted. A corridor controller will review your log shortly.');">
+                        
+                        <div class="form-group">
+                            <label for="ticket-type">Topic Category</label>
+                            <select id="ticket-type" class="form-control" required>
+                                <option value="escrow">Escrow Release Verification Help</option>
+                                <option value="customs">Cross-Border Customs Hold</option>
+                                <option value="driver">Carrier Dispute / Cargo Issue</option>
+                                <option value="technical">Account Security & System Bugs</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="manifest-ref">Associated Manifest ID (Optional)</label>
+                            <input type="text" id="manifest-ref" class="form-control" placeholder="e.g., #AJ-89771">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Detailed Summary of Issue</label>
+                            <textarea id="message" class="form-control" placeholder="Provide details like checkpoint locations or specific payment milestone metrics..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-submit-ticket">File Urgent Case</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- RIGHT PANEL: PREVIOUSLY ARCHIVED / TRACKED TICKET LISTINGS -->
+            <aside>
+                <div class="support-card">
+                    <h2>Your Open & Historic Tickets</h2>
+                    
+                    <div class="ticket-stream">
+                        
+                        <!-- Log Row 1 -->
+                        <div class="ticket-row">
+                            <div class="ticket-info">
+                                <h4>Customs validation lock query</h4>
+                                <p>Manifest ID: #AJ-89771 • Last active response: 10 mins ago</p>
+                            </div>
+                            <span class="ticket-status status-open">Under Review</span>
+                        </div>
+
+                        <!-- Log Row 2 -->
+                        <div class="ticket-row">
+                            <div class="ticket-info">
+                                <h4>Verification error on escrow milestone code</h4>
+                                <p>Resolved June 10, 2026 • Code updated by automated agent platform link</p>
+                            </div>
+                            <span class="ticket-status status-resolved">Resolved</span>
+                        </div>
+
+                        <!-- Log Row 3 -->
+                        <div class="ticket-row">
+                            <div class="ticket-info">
+                                <h4>Tanga terminal gate pass generation fail</h4>
+                                <p>Resolved June 02, 2026 • Port system cache cleared manually</p>
+                            </div>
+                            <span class="ticket-status status-resolved">Resolved</span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="support-card" style="background-color: #f8fafc; border-style: dashed; border-color: #cbd5e1; text-align: center; padding: 30px;">
+                    <h3 style="color: #0e223d; font-size: 1rem; margin-bottom: 8px;">Need Immediate Field Assistance?</h3>
+                    <p style="font-size: 0.85rem; color: #64748b; line-height: 1.4; margin-bottom: 15px;">
+                        For urgent active transit issues occurring directly at border stations or weighbridge points, contact our logistics hotline directly.
+                    </p>
+                    <strong style="color: #ff9900; font-size: 1.1rem;">+255 (0) 27 Aljazeera</strong>
+                </div>
+            </aside>
+
+        </div>
+    </main>
+
+</body>
+</html>
