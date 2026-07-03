@@ -1,73 +1,254 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Aljazeera | TRANSITS</title>
-	<link rel="stylesheet" type="text/css" href="s1.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ALJAZEERA TRANSITS | Homepage &bull; Official Website</title>
+    <link rel="stylesheet" type="text/css" href="s1.css">
 </head>
 <body>
-	<h1>ALJAZEERA TRANSITS</h1>
-	<h3>"Connecting Cargo. Delivering Trust."</h3>
+    <header class="hero-banner">
+        <h1>ALJAZEERA TRANSITS</h1>
+        <h3>"Connecting Cargo. Delivering Trust."</h3>
+        <hr width="100%">
+        <!-- Closed the logo div properly if it's meant to wrap the nav -->
+        <div class="logo">
+            <nav class="scrollable-nav">
+                <a href="index.html" class="nav-item">Home</a>
+                <!-- ... other links ... -->
+            <a href="abt.html" class="nav-item">About Us</a>
+            <a href="serv.html" class="nav-item">Services</a>
+            <a href="reqt.html" class="nav-item">Request Transport</a>
+            <a href="bcmt.html" class="nav-item">Become a Transporter</a>
+            <a href="lvtk.html" class="nav-item">Live Tracking</a>
+            <a href="pric.html" class="nav-item">Pricing</a>
+            <a href="faq.html" class="nav-item">FAQ</a>
+            <a href="cnt.html" class="nav-item">Contact Us</a>
+            <a href="lgn.html" class="nav-item">Login</a>
+            <a href="reg.html" class="nav-item">Register</a>
+            <a href="cd.html" class="nav-item">Customer Dashboard</a>
+            <a href="trdshb.html" class="nav-item">Transporter Dashboard</a>
+            <a href="admdshb.html" class="nav-item">Admin Dashboard</a>
+            <a href="t&C.html" class="nav-item">Terms & Conditions</a>
+            <a href="p&p.html" class="nav-item">Privacy Policy</a>
+            </nav>
+        </div>
+        <hr width="100%">
+        
+        <nav class="nav-links">
+            Choose your Language / اختر لغتك;<br>
+            <select id="lang-switcher">
+                <option value="en">English</option>
+                <option value="es">Español</option>
+                <option value="fr">Français</option>
+                <option value="ar">العربية (Arabic)</option>
+            </select><br>
+        </nav>
+    </header>
 
-	<div>
-		<a href="index.html" class="a">Home</a>
-		<a href="" class="b">About Us</a>
-		<a href="" class="c">Services</a>
-		<a href="" class="d">Request Transport</a>
-		<a href="" class="e">Become a Transporter</a>
-		<a href="lt.html" class="f">Live Tracking</a>
-		<a href="" class="g">Pricing</a>
-		<a href="" class="h">FAQ</a>
-		<a href="" class="i">Contact Us</a>
-		<a href="" class="j">Login</a>
-		<a href="reg.html" class="k">Register</a>
-		<a href="cd.html" class="l">Customer Dashboard</a>
-		<a href="td.html" class="m">Transporter Dashboard</a>
-		<a href="ad.html" class="n">Admin Dashboard</a>
-		<a href="" class="o">Terms & Conditions</a>
-		<a href="" class="p">Privacy Policy</a>
-	</div>
+    <main class="main-container">
+    
+    <div class="content-card" style="margin-top: 1.5rem;">
+        <p style="border-bottom: 2px solid white;">
+            Welcome / أهلاً بكم
+        </p>
+        
+        <div data-key="welcome" style="font-size: 1.15rem; line-height: 1.7; color: #ffffff; text-shadow: 0 1px 2px rgba(0,0,0,0.15); padding: 0.5rem 0;">
+            </div>
+    </div>
 
-	<p>Welcome to <b>Aljazeera Transits</b>, a platform that would help to connect customers needing cargo from various corners of the world as well as transporting cargo with payments through verified transporters to reach various corners of the world safely</p>
+    <div id="dynamic-content" data-key="intro">
+        </div>
+    
+</main>    
 
-	<p>
-		What Our Company Provides;<br>
-		<ul>
-			<li>Reliable Cargo Transportation Across Borders</li>
-			<li>Find trusted transporters for local and international deliveries.</li>
-		</ul>
-	</p>
+    <script>
+        const translations = {
+            en: {
+                welcome: `Welcome to <b>Aljazeera Transits</b>, a platform that would help to connect customers needing cargo from various corners of the world as well as transporting cargo with payments through verified transporters to reach various corners of the world safely.`,
+                intro: `
+        <div class="content-card">
+            <p>What Our Company Provides</p>
+            <ul>
+                <li><b>Reliable Cargo Transportation Across Borders:</b> Seamless customs handling and dependable transit networks globally.</li>
+                <li><b>Trusted Transporter Verification:</b> Find fully vetted drivers with validated licensing for local and international deliveries.</li>
+            </ul>
+        </div>
 
-	<p>
-		Features of our Platform;<br>
-		<ul>
-			<li>✓ Real-time Tracking</li>
-			<li>✓ Secure Payments</li>
-			<li>✓ Verified Transporters</li>
-			<li>✓ Cross-border Logistics</li>
-		</ul>
-	</p>
+        <div class="content-card" style="border-top: 4px solid #2563eb;">
+            <p>Features of our Platform</p>
+            <ul>
+                <li>✓ <b>Real-time Tracking:</b> Monitor your cargo's exact GPS coordinates instantly from your dashboard.</li>
+                <li>✓ <b>Secure Escrow Payments:</b> Capital is held safely in escrow and only released once delivery is verified.</li>
+                <li>✓ <b>Verified Transporters:</b> Every driver undergoes strict background and documentation checks.</li>
+                <li>✓ <b>Cross-border Logistics:</b> Simplified customs clearing networks for international shipping.</li>
+            </ul>
+        </div>
 
-	<p>How our Company Works / Operates;<br>
-		<ol>
-			<li>Create Request</li>
-			<li>Match Transporter</li>
-			<li>Pay Securely</li>
-			<li>Track Shipment</li>
-			<li>Confirm Delivery</li>
-			<li>Customer Testimonials</li>
-			<li>Latest Deliveries</li>
-		</ol>
-	</p>
-	<hr>
+        <div class="content-card" style="border-top: 4px solid #ea580c;">
+            <p>How our Company Works / Operates</p>
+            <ol>
+                <li><b>Create Request:</b> Customers post cargo details, destination, and budget.</li>
+                <li><b>Match Transporter:</b> Our system pairs the route with an available, verified driver.</li>
+                <li><b>Pay Securely:</b> Funds are securely locked in the platform escrow vault.</li>
+                <li><b>Track Shipment:</b> Follow the live transit journey transparently in real-time.</li>
+                <li><b>Confirm Delivery:</b> Recipient verifies cargo arrival to finalize the cycle.</li>
+            </ol>
+            
+            <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                <a href="reg.html" style="background:#2563eb; color:white; padding:0.75rem 1.5rem; text-decoration:none; border-radius:6px; font-weight:600; font-size:0.9rem;">Get Started Now</a>
+                <a href="bcmt.html" style="background:#0f172a; color:white; padding:0.75rem 1.5rem; text-decoration:none; border-radius:6px; font-weight:600; font-size:0.9rem;">Become a Transporter</a>
+            </div>
+        </div>`
+            },
+            es: {
+                welcome: `Bienvenido a <b>Aljazeera Transits</b>, una plataforma que ayuda a conectar a clientes que necesitan carga de varios rincones del mundo, así como a transportar carga con pagos a través de transportistas verificados para llegar a varios rincones del mundo de forma segura.`,
+                intro: `
+        <div class="content-card">
+            <p>Lo Que Ofrece Nuestra Empresa</p>
+            <ul>
+                <li><b>Transporte confiable de carga transfronteriza:</b> Gestión aduanera fluida y redes de tránsito confiables a nivel mundial.</li>
+                <li><b>Verificación de transportistas de confianza:</b> Encuentre conductores evaluados con licencias validadas para entregas locales e internacionales.</li>
+            </ul>
+        </div>
 
-	<footer>
-		For More Information, Visit the following page to contact us: <a href="">Contact Information</a><br>
-		You can also visit our <a href="">Contact Information</a><br>
-		© 2026<br>
-		All rights reserved
-	</footer>
+        <div class="content-card" style="border-top: 4px solid #2563eb;">
+            <p>Características de Nuestra Platforma</p>
+            <ul>
+                <li>✓ <b>Seguimiento en tempo real:</b> Supervise las coordenadas GPS exactas de su carga al instante desde su panel de control.</li>
+                <li>✓ <b>Pagos seguros en garantía:</b> El capital se retiene de forma segura y solo se libera una vez verificada la entrega.</li>
+                <li>✓ <b>Transportistas verificados:</b> Cada conductor se somete a estrictos controles de antecedentes y documentación.</li>
+                <li>✓ <b>Logística transfronteriza:</b> Redes de despacho aduanero simplificadas para envíos internacionales.</li>
+            </ul>
+        </div>
 
+        <div class="content-card" style="border-top: 4px solid #ea580c;">
+            <p>Cómo Funciona / Opera Nuestra Empresa</p>
+            <ol>
+                <li><b>Crear solicitud:</b> Los clientes publican los detalles de la carga, el destino y el presupuesto.</li>
+                <li><b>Asignar transportista:</b> Nuestro sistema asigna la ruta a un conductor verificado disponible.</li>
+                <li><b>Pagar de forma segura:</b> Los fondos se bloquean de forma segura en la bóveda de depósito de la plataforma.</li>
+                <li><b>Rastrear el envío:</b> Siga el viaje de tránsito en vivo de forma transparente en tempo real.</li>
+                <li><b>Confirmar la entrega:</b> El destinatario verifica la llegada de la carga para finalizar el ciclo.</li>
+            </ol>
+            
+            <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                <a href="reg.html" style="background:#2563eb; color:white; padding:0.75rem 1.5rem; text-decoration:none; border-radius:6px; font-weight:600; font-size:0.9rem;">Comenzar Ahora</a>
+                <a href="bcmt.html" style="background:#0f172a; color:white; padding:0.75rem 1.5rem; text-decoration:none; border-radius:6px; font-weight:600; font-size:0.9rem;">Convertirse en Transportista</a>
+            </div>
+        </div>`
+            },
+            fr: {
+                welcome: `Bienvenue sur <b>Aljazeera Transits</b>, une plateforme qui aide à connecter les clients ayant besoin de fret aux quatre coins du monde, ainsi qu'à transporter des marchandises avec des paiements via des transporteurs vérifiés pour atteindre les quatre coins du monde en toute sécurité.`,
+                intro: `
+        <div class="content-card">
+            <p>Ce Que Notre Entreprise Fournit</p>
+            <ul>
+                <li><b>Transport de fret transfrontalier fiable:</b> Gestion douanière transparente et réseaux de transit fiables dans le monde entier.</li>
+                <li><b>Vérification des transporteurs de confiance:</b> Trouvez des conducteurs agréés avec des licences validées pour les livraisons locales et internationales.</li>
+            </ul>
+        </div>
+
+        <div class="content-card" style="border-top: 4px solid #2563eb;">
+            <p>Fonctionnalités de Notre Plateforme</p>
+            <ul>
+                <li>✓ <b>Suivi en temps réel:</b> Surveillez instantanément les coordonnées GPS de votre cargaison depuis votre tableau de bord.</li>
+                <li>✓ <b>Paiements séquestres sécurisés:</b> Le capital est conservé en toute sécurité et n'est libéré qu'une fois la livraison vérifiée.</li>
+                <li>✓ <b>Transporteurs vérifiés:</b> Chaque conducteur subit des vérifications strictes de ses antécédents et de ses documents.</li>
+                <li>✓ <b>Logistique transfrontalière:</b> Réseaux de dédouanement simplifiés pour les expéditions internationales.</li>
+            </ul>
+        </div>
+
+        <div class="content-card" style="border-top: 4px solid #ea580c;">
+            <p>Comment Fonctionne / Opère Notre Entreprise</p>
+            <ol>
+                <li><b>Créer une demande:</b> Les clients publient les détails de la cargaison, la destination et le budget.</li>
+                <li><b>Trouver un transporteur:</b> Notre sistema associe l'itinéraire à un conducteur vérifié disponible.</li>
+                <li><b>Payer en toute sécurité:</b> Les fonds sont verrouillés en toute sécurité dans le coffre-fort de la plateforme.</li>
+                <li><b>Suivre l'expédition:</b> Suivez le trajet de transit en direct de manière transparente et en temps réel.</li>
+                <li><b>Confirmer la livraison:</b> Le destinataire vérifie l'arrivée de la marchandise pour finaliser le cycle.</li>
+            </ol>
+            
+            <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                <a href="reg.html" style="background:#2563eb; color:white; padding:0.75rem 1.5rem; text-decoration:none; border-radius:6px; font-weight:600; font-size:0.9rem;">Commencer Maintenant</a>
+                <a href="bcmt.html" style="background:#0f172a; color:white; padding:0.75rem 1.5rem; text-decoration:none; border-radius:6px; font-weight:600; font-size:0.9rem;">Devenir un Transporteur</a>
+            </div>
+        </div>`
+            },
+            ar: {
+                welcome: `مرحباً بكم في <b>الجزيرة ترانزيت (Aljazeera Transits)</b>، المنصة المثالية لربط العملاء الذين يتطلعون لشحن البضائع من مختلف بقاء العالم، ونقل الشحنات عبر مدفوعات آمنة ومن خلال ناقلين معتمدين لضمان وصولها إلى كافة وجهات العالم بكل أمان.`,
+                intro: `
+        <div class="content-card">
+            <p>الخدمات التي تقدمها شركتنا</p>
+            <ul>
+                <li><b>نقل بضائع موثوق عبر الحدود:</b> تعامل جمركي سلس وشبكات نقل دولية يعتمد عليها.</li>
+                <li><b>التحقق من موثوقية الناقلين:</b> اعثر على سائقين مفحوصين بالكامل ويحملون رخصاً سارية للشحن المحلي والدولي.</li>
+            </ul>
+        </div>
+
+        <div class="content-card" style="border-top: 4px solid #2563eb;">
+            <p>ميزات منصتنا</p>
+            <ul>
+                <li>✓ <b>تتبع الشحنات في الوقت الفعلي:</b> راقب إحداثيات نظام تحديد المواقع (GPS) لشحنتك فوراً من لوحة التحكم الخاصة بك.</li>
+                <li>✓ <b>مدفوعات الضمان الآمنة:</b> تُحفظ الأموال بأمان في حساب الضمان ولا تُصرف إلا بعد تأكيد استلام الشحنة.</li>
+                <li>✓ <b>ناقلون معتمدون ومفحوصون:</b> يخضع كل سائق لفحص دقيق للسيرة الذاتية والوثائق الرسمية.</li>
+                <li>✓ <b>خدمات لوجستية عابرة للحدود:</b> شبكات تخليص جمركي مبسطة لعمليات الشحن الدولية.</li>
+            </ul>
+        </div>
+
+        <div class="content-card" style="border-top: 4px solid #ea580c;">
+            <p>آلية عمل وتشغيل شركتنا</p>
+            <ol>
+                <li><b>إنشاء طلب جديد:</b> يقوم العميل بنشر تفاصيل الشحنة، والوجهة، والميزانية المحددة.</li>
+                <li><b>مطابقة واختيار الناقل:</b> يقوم نظامنا بربط مسار الشحنة مع سائق متاح ومعتمد.</li>
+                <li><b>الدفع بشكل آمن:</b> تُقفل الأموال بأمان في خزنة الضمان الرقمية الخاصة بالمنصة.</li>
+                <li><b>تتبع مسار الشحنة:</b> تابع رحلة النقل مباشرة وبشفافية تامة في الوقت الفعلي.</li>
+                <li><b>تأكيد استلام الشحنة:</b> يتأكد المستلم من وصول الشحنة سليمة لإنهاء دورة الشحن بالكامل.</li>
+            </ol>
+            
+            <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                <a href="reg.html" style="background:#2563eb; color:white; padding:0.75rem 1.5rem; text-decoration:none; border-radius:6px; font-weight:600; font-size:0.9rem;">ابدأ الآن</a>
+                <a href="bcmt.html" style="background:#0f172a; color:white; padding:0.75rem 1.5rem; text-decoration:none; border-radius:6px; font-weight:600; font-size:0.9rem;">كن ناقلاً معنا</a>
+            </div>
+        </div>`
+            }
+        };
+
+        const switcher = document.getElementById('lang-switcher');
+
+        function changeLanguage(lang) {
+            if (lang === 'ar') {
+                document.documentElement.dir = 'rtl';
+                document.documentElement.lang = 'ar';
+            } else {
+                document.documentElement.dir = 'ltr';
+                document.documentElement.lang = lang;
+            }
+
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (translations[lang] && translations[lang][key]) {
+                    element.innerHTML = translations[lang][key]; 
+                }
+            });
+            
+            localStorage.setItem('preferredLanguage', lang);
+        }
+
+        switcher.addEventListener('change', (e) => {
+            changeLanguage(e.target.value);
+        });
+
+        const savedLang = localStorage.getItem('preferredLanguage') || 'en';
+        switcher.value = savedLang;
+        changeLanguage(savedLang);
+    </script>
+
+    <hr>
+    <footer class="frame-replacement bottom-row">
+        For more Information: <a href="cnt.html">Contact us</a><br>
+        &#169; 2026 | Aljazeera Transits<br>
+        All rights reserved.
+    </footer>
 </body>
 </html>
